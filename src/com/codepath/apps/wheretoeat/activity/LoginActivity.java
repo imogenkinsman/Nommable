@@ -34,7 +34,8 @@ public class LoginActivity extends OAuthLoginActivity<YelpClient> {
 	// i.e Display application "homepage"
     @Override
     public void onLoginSuccess() {
-    	
+    	Intent i = new Intent(this, SearchActivity.class);
+    	startActivity(i);
     }
     
     // OAuth authentication flow failed, handle the error
@@ -48,8 +49,7 @@ public class LoginActivity extends OAuthLoginActivity<YelpClient> {
     // Uses the client to initiate OAuth authorization
     // This should be tied to a button used to login
     public void loginToRest(View view) {
-    	Intent i = new Intent(this, SearchActivity.class);
-    	startActivity(i);
+    	getClient().connect();
     }
 
 }
