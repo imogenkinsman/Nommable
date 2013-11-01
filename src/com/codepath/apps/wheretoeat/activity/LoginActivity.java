@@ -9,6 +9,12 @@ import com.codepath.apps.wheretoeat.R;
 import com.codepath.apps.wheretoeat.YelpClient;
 import com.codepath.oauth.OAuthLoginActivity;
 
+/**
+ * Interesting thing about the Yelp OAuth process - they don't do login, at all. Both the Token and the Token Secret are
+ * provided when you register for API access, so the login step is unnecessary. I'm gutting them for now, and eventually we may want to
+ * call this something other than "LoginActivity" (probably just start with our search activity).
+ */
+
 public class LoginActivity extends OAuthLoginActivity<YelpClient> {
 
 	@Override
@@ -28,8 +34,7 @@ public class LoginActivity extends OAuthLoginActivity<YelpClient> {
 	// i.e Display application "homepage"
     @Override
     public void onLoginSuccess() {
-    	Intent i = new Intent(this, SearchActivity.class);
-    	startActivity(i);
+    	
     }
     
     // OAuth authentication flow failed, handle the error
@@ -43,7 +48,8 @@ public class LoginActivity extends OAuthLoginActivity<YelpClient> {
     // Uses the client to initiate OAuth authorization
     // This should be tied to a button used to login
     public void loginToRest(View view) {
-        getClient().connect();
+    	Intent i = new Intent(this, SearchActivity.class);
+    	startActivity(i);
     }
 
 }

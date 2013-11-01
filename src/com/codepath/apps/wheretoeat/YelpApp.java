@@ -35,4 +35,5 @@ public class YelpApp extends com.activeandroid.app.Application {
     public static YelpClient getRestClient() {
     	return (YelpClient) YelpClient.getInstance(YelpClient.class, YelpApp.context);
     }
+    
 }
