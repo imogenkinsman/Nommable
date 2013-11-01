@@ -3,6 +3,7 @@ package com.codepath.apps.wheretoeat.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
 import com.codepath.apps.wheretoeat.R;
 
@@ -21,25 +22,7 @@ public class SearchActivity extends Activity {
 		return true;
 	}
 
-	/**
-	YelpClient client = YelpClientApp.getRestClient();
-	client.search("food", "san francisco", new JsonHttpResponseHandler() {
-	  @Override
-	  public void onSuccess(int code, JSONObject body) {
-	    try {
-	      JSONArray jsonArray = body.getJSONArray("businesses");
-	      ArrayList<Restaurant> rs = Restaurant.fromJson(jsonArray);
-	      // Now we have an array of restaurant objects
-	      // Might now create an ArrayAdapter<Restaurant> to load the restaurants into a ListView
-	    } catch (JSONException e) {
-	      e.printStackTrace();
-	    }
-	  }
-
-	  @Override
-	  public void onFailure(Throwable arg0) {
-	    Toast.makeText(getBaseContext(), "FAIL", Toast.LENGTH_LONG).show();
-	  }
-	});
-	*/
+	public void findRestaurant(View v) {
+		
+	}
 }

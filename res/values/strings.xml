@@ -7,5 +7,6 @@
     <string name="login_label">Log in</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_search_result">SearchResultActivity</string>
+    <string name="find_restaurant">Find A Restaurant</string>
 
 </resources>
