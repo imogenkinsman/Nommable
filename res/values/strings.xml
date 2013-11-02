@@ -5,7 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_photos">Flickr Photos</string>
     <string name="login_label">Log in</string>
-    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_search">Find a Restaurant</string>
     <string name="title_activity_search_result">SearchResultActivity</string>
     <string name="find_restaurant">Find A Restaurant</string>
 

@@ -6,6 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
@@ -122,6 +124,7 @@ public class Restaurant extends Model{
 			}
 
 			Restaurant restaurant = Restaurant.fromJson(json);
+			Log.d("DEBUG", restaurant.toString());
 			if (restaurant != null) {
 				restaurants.add(restaurant);
 			}
