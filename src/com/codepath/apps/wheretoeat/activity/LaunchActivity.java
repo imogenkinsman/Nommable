@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.View;
 
 import com.codepath.apps.wheretoeat.R;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 
 public class LaunchActivity extends Activity {
 /**
@@ -26,7 +28,14 @@ public class LaunchActivity extends Activity {
 	}
 	//button attached to Launch/Intro Screen
 	public void launch(View v) {
-		Intent i = new Intent(this, SearchActivity.class);
-		startActivity(i);
+		int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getBaseContext());
+                if(status!=ConnectionResult.SUCCESS){ // Google Play Services are not available
+                	int requestCode = 10;
+                	Dialog dialog = GooglePlayServicesUtil.getErrorDialog(status, this, requestCode);
+                	dialog.show();
+ 
+        	} else {
+			Intent i = new Intent(this, SearchActivity.class);
+			startActivity(i);
 	}
 }
