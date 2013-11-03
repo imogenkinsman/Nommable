@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.location.Location;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -23,7 +24,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-public class SearchActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener {
+public class SearchActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
 
 	private LocationClient locationClient;
 	
@@ -42,7 +43,6 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 
         locationClient = new LocationClient(this, this, this);
 	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -120,4 +120,24 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 	public void onDisconnected() {
 		// TODO Auto-generated method stub
 	}
+	
+	//Define the location update callback by implementing LocationListener
+	@Override
+	public void onLocationChanged(Location location) {
+		String msg = "Updated Location: " + Double.toString(location.getLatitude()) + "," 
+				+ Double.toString(location.getLongitude());
+		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+		
+	}
+	@Override
+	public void onProviderDisabled(String provider) {
+	}
+	@Override
+	public void onProviderEnabled(String provider) {
+	}
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+	}
 }
+
+

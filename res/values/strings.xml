@@ -8,5 +8,8 @@
     <string name="title_activity_search">Find a Restaurant</string>
     <string name="title_activity_search_result">SearchResultActivity</string>
     <string name="find_restaurant">Find A Restaurant</string>
+    <string name="launch">Start Search</string>
+    <string name="title_activity_launch">LaunchActivity</string>
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>

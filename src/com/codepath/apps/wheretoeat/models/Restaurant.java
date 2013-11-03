@@ -1,5 +1,6 @@
 package com.codepath.apps.wheretoeat.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -13,8 +14,9 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
 @Table (name = "Restaurant")
-public class Restaurant extends Model{
+public class Restaurant extends Model implements Serializable {
 
+	private static final long serialVersionUID = -7256102743331094491L;
 	@Column(name="name")
 	private String name;
 	@Column(name="business_id")
@@ -103,6 +105,16 @@ public class Restaurant extends Model{
 			r.name = jsonObject.getString("name");
 			r.display_phone = jsonObject.getString("display_phone");
 			r.image_url = jsonObject.getString("image_url");
+			r.address1 = jsonObject.getString("address1");
+			r.address2 = jsonObject.getString("address2");
+			r.address3 = jsonObject.getString("address3");
+			r.state = jsonObject.getString("state_code");
+			r.is_closed = jsonObject.getBoolean("is_closed");
+			r.distance = jsonObject.getLong("distance");
+			r.latitute = jsonObject.getDouble("latitude");
+			r.longitude = jsonObject.getDouble("longitude");
+			r.zip = jsonObject.getString("postal_code"); // could be "zip"
+			r.review_count = jsonObject.getInt("review_count");
 		} catch (JSONException e) {
 			e.printStackTrace();
 			return null;
