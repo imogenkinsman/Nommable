@@ -1,10 +1,13 @@
 package com.codepath.apps.wheretoeat.activity;
 
+import java.util.ArrayList;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
@@ -65,14 +68,16 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 
 	public void findRestaurant(View v) {
 		YelpApp.getRestClient().search("restaurant", createMockLocation(), new JsonHttpResponseHandler() {
-			// convert response to objects, create intent, pass to results activity
 			
 			@Override
 			public void onSuccess(int httpResponse, JSONObject jsonResponse) {
 				//Log.d("DEBUG", jsonResponse.toString());
 				try {
 					Log.d("DEBUG", jsonResponse.getJSONArray("businesses").toString());
-					Restaurant.fromJson(jsonResponse.getJSONArray("businesses"));
+					ArrayList<Restaurant> restaurants = Restaurant.fromJson(jsonResponse.getJSONArray("businesses"));
+					Intent i = new Intent(SearchActivity.this, SearchResultActivity.class);
+					i.putExtra("restaurants", restaurants);
+					startActivity(i);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					Log.d("DEBUG", e.getMessage());
