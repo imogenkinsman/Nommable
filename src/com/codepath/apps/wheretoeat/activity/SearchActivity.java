@@ -1,6 +1,5 @@
 package com.codepath.apps.wheretoeat.activity;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -73,6 +72,7 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 				//Log.d("DEBUG", jsonResponse.toString());
 				try {
 					Log.d("DEBUG", jsonResponse.getJSONArray("businesses").toString());
+					Restaurant.fromJson(jsonResponse.getJSONArray("businesses"));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					Log.d("DEBUG", e.getMessage());
