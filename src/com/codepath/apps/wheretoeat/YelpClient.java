@@ -24,8 +24,8 @@ public class YelpClient extends OAuthBaseClient {
     public static final String REST_URL = "http://api.yelp.com/v2"; 
     public static final String REST_CONSUMER_KEY = "WwVnz4cduQpvMt8QDd50MA";     
     public static final String REST_CONSUMER_SECRET = "9hqo5hZAy8Lw4cLalQpAwXF3sDw"; 
-    public static final String TOKEN = "_5hTM7yu_Dt9JnA5DMxP5UNJwV6XJxDQ";
-    public static final String TOKEN_SECRET = "e0y3wvIL2N-F-1D_ohqemGCcfgk";
+    public static final String TOKEN = "QV1fR6bpacFJdFBIwBaRYIndO5iy0h2I";
+    public static final String TOKEN_SECRET = "KdVBk5gzCC39UA0sRsaJesh6MxE";
     public static final String REST_CALLBACK_URL = "oauth://cpyelp"; 
     
     public YelpClient(Context context) {
