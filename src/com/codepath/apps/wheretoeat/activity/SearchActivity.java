@@ -65,7 +65,7 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
     }
 
 	public void findRestaurant(View v) {
-		YelpApp.getRestClient().search("restaurant", locationClient.getLastLocation(), new JsonHttpResponseHandler() {
+		YelpApp.getRestClient().search("restaurant", createMockLocation(), new JsonHttpResponseHandler() {
 			// convert response to objects, create intent, pass to results activity
 			
 			@Override
@@ -96,17 +96,10 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 	@SuppressLint("NewApi")
 	@Override
 	public void onConnected(Bundle connectionHint) {
-//		Location loc = locationClient.getLastLocation();
+		Location loc = locationClient.getLastLocation();
+		Log.d("DEBUG", "connected");
 		
 		// mocking this for now - can't get it to work with my emulator
-		locationClient.setMockMode(true);
-		Location loc = new Location("flp");
-		loc.setLatitude(37.794593);
-		loc.setLongitude(-122.441254);
-		loc.setAccuracy(3.0f);
-		loc.setTime(System.currentTimeMillis());
-		loc.setElapsedRealtimeNanos(3000L); // this won't work for anything below API 17, but this won't be necessary when we drop mocks
-		locationClient.setMockLocation(loc);
 		
 		if (loc != null){
 			Log.d("DEBUG", "location=" + loc.toString());
@@ -137,6 +130,19 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 	}
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
+	}
+	
+	@SuppressLint("NewApi")
+	private Location createMockLocation() {
+//		locationClient.setMockMode(true);  // locationclient will throw an error if it hasn't been connected yet
+		Location loc = new Location("flp");
+		loc.setLatitude(37.794593);
+		loc.setLongitude(-122.441254);
+		loc.setAccuracy(3.0f);
+		loc.setTime(System.currentTimeMillis());
+		loc.setElapsedRealtimeNanos(3000L); // this won't work for anything below API 17, but this won't be necessary when we drop mocks
+//		locationClient.setMockLocation(loc);
+		return loc;
 	}
 }
 
