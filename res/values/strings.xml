@@ -11,5 +11,7 @@
     <string name="launch">Start Search</string>
     <string name="title_activity_launch">LaunchActivity</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="what_else">What else?</string>
+    <string name="try_again">Try Again</string>
 
 </resources>

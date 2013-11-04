@@ -63,9 +63,9 @@ public class Restaurant extends Model implements Serializable {
 	public String getYelpId() {
 		return id;
 	}
-//	public String getAdress() {
-//		return address1 + address2 + address3;
-//	}
+	public String getAdress() {
+		return address;
+	}	
 	public String getState() {
 		return state;
 	}
@@ -101,14 +101,24 @@ public class Restaurant extends Model implements Serializable {
 		Restaurant r = new Restaurant();
 		// Deserialize json into object fields
 		try {
+			JSONObject location = jsonObject.getJSONObject("location");
+			
 			r.id = jsonObject.getString("id");
 			r.name = jsonObject.getString("name");
 			r.display_phone = jsonObject.getString("display_phone");
 			r.image_url = jsonObject.getString("image_url");
-			r.address = jsonObject.getJSONObject("location").getString("address");
-//			r.address2 = jsonObject.getString("address2");
-//			r.address3 = jsonObject.getString("address3");
-			r.state = jsonObject.getJSONObject("location").getString("state_code");
+			
+			JSONArray jsonAddress = location.getJSONArray("address");
+			r.address = "";
+			for (int i = 0; i < jsonAddress.length(); i++) {
+				r.address += jsonAddress.getString(i);
+				if (i + 1 < jsonAddress.length()) {
+					r.address += ", ";
+				}
+			}
+			
+			r.state = location.getString("state_code");
+			r.city = location.getString("city");
 			r.is_closed = jsonObject.getBoolean("is_closed");
 			r.distance = jsonObject.getLong("distance");
 			//r.latitute = jsonObject.getDouble("latitude");
@@ -136,7 +146,6 @@ public class Restaurant extends Model implements Serializable {
 			}
 
 			Restaurant restaurant = Restaurant.fromJson(json);
-			Log.d("DEBUG", restaurant.toString());
 			if (restaurant != null) {
 				restaurants.add(restaurant);
 			}
