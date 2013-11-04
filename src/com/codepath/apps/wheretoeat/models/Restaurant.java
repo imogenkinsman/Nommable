@@ -63,7 +63,7 @@ public class Restaurant extends Model implements Serializable {
 	public String getYelpId() {
 		return id;
 	}
-	public String getAdress() {
+	public String getAddress() {
 		return address;
 	}	
 	public String getState() {
