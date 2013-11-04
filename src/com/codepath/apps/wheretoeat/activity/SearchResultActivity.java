@@ -1,6 +1,7 @@
 package com.codepath.apps.wheretoeat.activity;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -23,7 +24,10 @@ public class SearchResultActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_result);
 		setup();
-		setRestaurantToView(restaurants.get(0));
+		
+		// insert smart algorithm here - for now, just random from results
+		Random random = new Random();
+		setRestaurantToView(restaurants.get(random.nextInt(restaurants.size())));
 	}
 
 	@Override
