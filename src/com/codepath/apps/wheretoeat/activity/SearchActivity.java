@@ -77,6 +77,9 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 					ArrayList<Restaurant> restaurants = Restaurant.fromJson(jsonResponse.getJSONArray("businesses"));
 					Intent i = new Intent(SearchActivity.this, SearchResultActivity.class);
 					i.putExtra("restaurants", restaurants);
+					//send curr location data too
+					i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
+					i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
 					startActivity(i);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
