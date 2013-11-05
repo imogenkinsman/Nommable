@@ -22,7 +22,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class SearchResultActivity extends FragmentActivity {
+public class SearchResultActivity extends FragmentActivity implements OnMyLocationChangeListener {
 	
 	TextView tvRestName;
 	TextView tvRestPhone;
@@ -31,6 +31,9 @@ public class SearchResultActivity extends FragmentActivity {
 	ArrayList<Restaurant> restaurants;
 	GoogleMap map;
 	Marker marker;
+	Marker target_marker;
+	LatLng addressPosition;
+	LatLng mLatLng;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,21 @@ public class SearchResultActivity extends FragmentActivity {
 		// insert smart algorithm here - for now, just random from results
 		Random random = new Random();
 		setRestaurantToView(restaurants.get(random.nextInt(restaurants.size())));
+		
+		//get Intent datas
+		//Don't use getMyLocation() 
+		//see: http://developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#getMyLocation()
+		Bundle b = getIntent().getExtras();
+		try {
+			restaurants = (ArrayList<Restaurant>) getIntent().getSerializableExtra("restaurants");
+			double curr_latitude = (Double) b.get("latitude");
+			double curr_longitude = (Double) b.get("longitude");
+			mLatLng = new LatLng(curr_latitude, curr_longitude);
+			Log.d("DEBUG", "bundle success"+ curr_latitude + "," + curr_longitude);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.e("ERROR", "Error at bundle");
+		}
 	}
 
 	@Override
@@ -56,11 +74,11 @@ public class SearchResultActivity extends FragmentActivity {
 		tvStreetAddress = (TextView) findViewById(R.id.tvStreetAddress);
 		tvCityState = (TextView) findViewById(R.id.tvCityState);
 		
-		restaurants = (ArrayList<Restaurant>) getIntent().getSerializableExtra("restaurants");
 		
 		map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-		
+		map.setMyLocationEnabled(true);
+		map.setOnMyLocationChangeListener(this);
 		marker = null;
 	}
 	
@@ -88,7 +106,30 @@ public class SearchResultActivity extends FragmentActivity {
 				marker.remove();
 			}
 			LatLng addressPosition = new LatLng(returnedAddress.getLatitude(), returnedAddress.getLongitude());
-			marker = map.addMarker(new MarkerOptions().position(addressPosition).title(rest.getName()));
+			//marker = map.addMarker(new MarkerOptions().position(addressPosition).title(rest.getName()));
+			showRestaurantOnMap(rest);
 		}
+	}
+	private void showRestaurantOnMap(Restaurant r) {
+		target_marker = map.addMarker(new MarkerOptions().position(addressPosition)
+				.title(r.getName())
+				.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+		marker = map.addMarker(new MarkerOptions().position(mLatLng)
+		        .title("I'm here")
+		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+		 map.moveCamera(CameraUpdateFactory.newLatLngZoom(mLatLng, 15));
+		 map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+	@Override
+	public void onMyLocationChange(Location location) {
+	        // Getting latitude of the current location
+	        double latitude = location.getLatitude();
+	        // Getting longitude of the current location
+	        double longitude = location.getLongitude();
+	        // Creating a LatLng object for the current location
+	        LatLng latLng = new LatLng(latitude, longitude);
+	        // Showing the current location in Google Map
+	        map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+	        // Zoom in the Google Map
+	        map.animateCamera(CameraUpdateFactory.zoomTo(15));
 	}
 }
