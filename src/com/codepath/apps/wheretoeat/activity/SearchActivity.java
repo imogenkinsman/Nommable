@@ -69,7 +69,7 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
     }
 
 	public void findRestaurant(View v) {
-		YelpApp.getRestClient().search("restaurant", createMockLocation(), new JsonHttpResponseHandler() {
+		YelpApp.getRestClient().search("restaurant", locationClient.getLastLocation(), new JsonHttpResponseHandler() {
 			
 			@Override
 			public void onSuccess(int httpResponse, JSONObject jsonResponse) {
@@ -80,11 +80,8 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 					Intent i = new Intent(SearchActivity.this, SearchResultActivity.class);
 					i.putExtra("restaurants", restaurants);
 					//send curr location data too
-					//i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
-					//i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
-					// hardcoded until I can get this to work with my emulator
-					i.putExtra("latitude", 37.770432);
-					i.putExtra("longitude", -122.403942);
+					i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
+					i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
 					startActivity(i);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -160,19 +157,6 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 	}
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
-	}
-	
-	@SuppressLint("NewApi")
-	private Location createMockLocation() {
-//		locationClient.setMockMode(true);  // locationclient will throw an error if it hasn't been connected yet
-		Location loc = new Location("flp");
-		loc.setLatitude(37.794593);
-		loc.setLongitude(-122.441254);
-		loc.setAccuracy(3.0f);
-		loc.setTime(System.currentTimeMillis());
-		loc.setElapsedRealtimeNanos(3000L); // this won't work for anything below API 17, but this won't be necessary when we drop mocks
-//		locationClient.setMockLocation(loc);
-		return loc;
 	}
 	
 	public void onHistory(MenuItem mi) {
