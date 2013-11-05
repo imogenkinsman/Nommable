@@ -68,7 +68,14 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
     }
 
 	public void findRestaurant(View v) {
-		YelpApp.getRestClient().search("restaurant", locationClient.getLastLocation(), new JsonHttpResponseHandler() {
+		Location loc = locationClient.getLastLocation();
+		
+		if (loc == null){
+			Toast.makeText(this, "Unable to access current location", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
+		YelpApp.getRestClient().search("restaurant", loc, new JsonHttpResponseHandler() {
 			
 			@Override
 			public void onSuccess(int httpResponse, JSONObject jsonResponse) {
@@ -103,14 +110,7 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 
 	@Override
 	public void onConnected(Bundle connectionHint) {
-		Location loc = locationClient.getLastLocation();
-				
-		if (loc != null){
-			Log.d("DEBUG", "location=" + loc.toString());
-		} else {
-			// TODO: Handle this better
-			Toast.makeText(this, "Unable to access current location", Toast.LENGTH_LONG).show();
-		}
+
 	}
 
 	@Override
