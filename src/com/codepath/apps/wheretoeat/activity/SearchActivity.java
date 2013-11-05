@@ -2,6 +2,7 @@ package com.codepath.apps.wheretoeat.activity;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,6 +14,7 @@ import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -78,8 +80,11 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 					Intent i = new Intent(SearchActivity.this, SearchResultActivity.class);
 					i.putExtra("restaurants", restaurants);
 					//send curr location data too
-					i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
-					i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
+					//i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
+					//i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
+					// hardcoded until I can get this to work with my emulator
+					i.putExtra("latitude", 37.770432);
+					i.putExtra("longitude", -122.403942);
 					startActivity(i);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -93,6 +98,23 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 				Toast.makeText(SearchActivity.this, "Unable to access Yelp", Toast.LENGTH_SHORT).show();
 			}
 			
+			@Override
+			public void onFailure(Throwable arg0, JSONArray arg1) {
+				// TODO Auto-generated method stub
+				Log.e("ERROR", arg0.toString());
+			}
+			
+			@Override
+			public void onFailure(Throwable arg0) {
+				// TODO Auto-generated method stub
+				Log.e("ERROR", arg0.toString());
+			}
+			
+			@Override
+			public void onFailure(Throwable arg0, String arg1) {
+				// TODO Auto-generated method stub
+				Log.e("ERROR", arg0.toString());
+			}
 		});
 	}
 
@@ -151,6 +173,11 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 		loc.setElapsedRealtimeNanos(3000L); // this won't work for anything below API 17, but this won't be necessary when we drop mocks
 //		locationClient.setMockLocation(loc);
 		return loc;
+	}
+	
+	public void onHistory(MenuItem mi) {
+		Intent i = new Intent(this, HistoryActivity.class);
+		startActivity(i);
 	}
 }
 

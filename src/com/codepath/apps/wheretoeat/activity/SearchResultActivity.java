@@ -8,6 +8,7 @@ import java.util.Random;
 
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -16,10 +17,13 @@ import android.widget.TextView;
 
 import com.codepath.apps.wheretoeat.R;
 import com.codepath.apps.wheretoeat.models.Restaurant;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMyLocationChangeListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class SearchResultActivity extends FragmentActivity implements OnMyLocationChangeListener {
@@ -45,20 +49,6 @@ public class SearchResultActivity extends FragmentActivity implements OnMyLocati
 		Random random = new Random();
 		setRestaurantToView(restaurants.get(random.nextInt(restaurants.size())));
 		
-		//get Intent datas
-		//Don't use getMyLocation() 
-		//see: http://developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#getMyLocation()
-		Bundle b = getIntent().getExtras();
-		try {
-			restaurants = (ArrayList<Restaurant>) getIntent().getSerializableExtra("restaurants");
-			double curr_latitude = (Double) b.get("latitude");
-			double curr_longitude = (Double) b.get("longitude");
-			mLatLng = new LatLng(curr_latitude, curr_longitude);
-			Log.d("DEBUG", "bundle success"+ curr_latitude + "," + curr_longitude);
-		} catch (Exception e) {
-			e.printStackTrace();
-			Log.e("ERROR", "Error at bundle");
-		}
 	}
 
 	@Override
@@ -74,15 +64,28 @@ public class SearchResultActivity extends FragmentActivity implements OnMyLocati
 		tvStreetAddress = (TextView) findViewById(R.id.tvStreetAddress);
 		tvCityState = (TextView) findViewById(R.id.tvCityState);
 		
+		Bundle b = getIntent().getExtras();
+		try {
+			restaurants = (ArrayList<Restaurant>) getIntent().getSerializableExtra("restaurants");
+			double curr_latitude = (Double) b.get("latitude");
+			double curr_longitude = (Double) b.get("longitude");
+			mLatLng = new LatLng(curr_latitude, curr_longitude);
+			Log.d("DEBUG", "bundle success"+ curr_latitude + "," + curr_longitude);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.e("ERROR", "Error at bundle");
+		}
 		
 		map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
-		map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 		map.setMyLocationEnabled(true);
 		map.setOnMyLocationChangeListener(this);
+
 		marker = null;
 	}
 	
 	private void setRestaurantToView(Restaurant rest) {
+		rest.setViewed();
+		
 		tvRestName.setText(rest.getName());
 		tvRestPhone.setText(rest.getDisplayPhone());
 		tvStreetAddress.setText(rest.getAddress());
@@ -119,6 +122,8 @@ public class SearchResultActivity extends FragmentActivity implements OnMyLocati
 		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 		 map.moveCamera(CameraUpdateFactory.newLatLngZoom(mLatLng, 15));
 		 map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+	}
+		 
 	@Override
 	public void onMyLocationChange(Location location) {
 	        // Getting latitude of the current location

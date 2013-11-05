@@ -13,5 +13,7 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="what_else">What else?</string>
     <string name="try_again">Try Again</string>
+    <string name="title_activity_history">HistoryActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

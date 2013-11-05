@@ -12,6 +12,7 @@ import android.util.Log;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 @Table (name = "Restaurant")
 public class Restaurant extends Model implements Serializable {
@@ -23,10 +24,6 @@ public class Restaurant extends Model implements Serializable {
 	private String id;
 	@Column(name="address")
 	private String address;
-	@Column(name="address2")
-	private String address2;
-	@Column(name="address3")
-	private String address3;
 	@Column(name="latitute")
 	private double latitute;
 	@Column(name="longitude")
@@ -53,6 +50,8 @@ public class Restaurant extends Model implements Serializable {
 	private String image_url;
 	@Column(name="url")
 	private String yelp_url;
+	@Column(name="viewedAt")
+	private Long viewedAt;
 
 	public Restaurant() {
 		super();
@@ -97,6 +96,11 @@ public class Restaurant extends Model implements Serializable {
 		return yelp_url;
 	}
 	
+	public void setViewed() {
+		this.viewedAt = System.currentTimeMillis();
+		this.save();
+	}
+	
 	public static Restaurant fromJson(JSONObject jsonObject) {
 		Restaurant r = new Restaurant();
 		// Deserialize json into object fields
@@ -125,6 +129,7 @@ public class Restaurant extends Model implements Serializable {
 			//r.longitude = jsonObject.getDouble("longitude");
 			r.zip = jsonObject.getJSONObject("location").getString("postal_code"); // could be "zip"
 			r.review_count = jsonObject.getInt("review_count");
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 			return null;
@@ -151,5 +156,9 @@ public class Restaurant extends Model implements Serializable {
 			}
 		}
 		return restaurants;
+	}
+	
+	public static ArrayList<Restaurant> getHistory() {
+		return new Select().from(Restaurant.class).orderBy("viewedAt DESC").limit("30").execute();
 	}
 }
