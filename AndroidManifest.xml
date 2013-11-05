@@ -52,6 +52,9 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
 
                 <data
                     android:host="cpyelp"
@@ -61,11 +64,6 @@
         <activity
             android:name="com.codepath.apps.wheretoeat.activity.SearchActivity"
             android:label="@string/title_activity_search" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.codepath.apps.wheretoeat.activity.SearchResultActivity"

@@ -185,6 +185,10 @@ containing a value of this type.
         public static final int ic_plusone_small_off_client=0x7f02001b;
         public static final int ic_plusone_standard_off_client=0x7f02001c;
         public static final int ic_plusone_tall_off_client=0x7f02001d;
+        public static final int red_button_enabled=0x7f02001e;
+        public static final int red_button_focused=0x7f02001f;
+        public static final int red_button_pressed=0x7f020020;
+        public static final int states_red_button=0x7f020021;
     }
     public static final class id {
         public static final int action_settings=0x7f05000f;
@@ -357,6 +361,7 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int RedButton=0x7f080002;
     }
     public static final class styleable {
         /** Attributes that can be used with a MapAttrs.

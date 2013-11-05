@@ -10,10 +10,12 @@
 
     <Button
         android:id="@+id/launch"
+        style="@style/RedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/launch" />
+        android:text="@string/launch"
+        android:onClick="launch" />
 
 </RelativeLayout>
