@@ -10,7 +10,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
-import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,7 +27,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-public class SearchActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
+public class SearchActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener {
 
 	private LocationClient locationClient;
 	
@@ -73,7 +72,6 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 			
 			@Override
 			public void onSuccess(int httpResponse, JSONObject jsonResponse) {
-				//Log.d("DEBUG", jsonResponse.toString());
 				try {
 					Log.d("DEBUG", jsonResponse.getJSONArray("businesses").toString());
 					ArrayList<Restaurant> restaurants = Restaurant.fromJson(jsonResponse.getJSONArray("businesses"));
@@ -95,23 +93,6 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 				Toast.makeText(SearchActivity.this, "Unable to access Yelp", Toast.LENGTH_SHORT).show();
 			}
 			
-			@Override
-			public void onFailure(Throwable arg0, JSONArray arg1) {
-				// TODO Auto-generated method stub
-				Log.e("ERROR", arg0.toString());
-			}
-			
-			@Override
-			public void onFailure(Throwable arg0) {
-				// TODO Auto-generated method stub
-				Log.e("ERROR", arg0.toString());
-			}
-			
-			@Override
-			public void onFailure(Throwable arg0, String arg1) {
-				// TODO Auto-generated method stub
-				Log.e("ERROR", arg0.toString());
-			}
 		});
 	}
 
@@ -120,14 +101,10 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 		Toast.makeText(this, "Connection Failed", Toast.LENGTH_LONG).show();
 	}
 
-	@SuppressLint("NewApi")
 	@Override
 	public void onConnected(Bundle connectionHint) {
 		Location loc = locationClient.getLastLocation();
-		Log.d("DEBUG", "connected");
-		
-		// mocking this for now - can't get it to work with my emulator
-		
+				
 		if (loc != null){
 			Log.d("DEBUG", "location=" + loc.toString());
 		} else {
@@ -139,24 +116,6 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 	@Override
 	public void onDisconnected() {
 		// TODO Auto-generated method stub
-	}
-	
-	//Define the location update callback by implementing LocationListener
-	@Override
-	public void onLocationChanged(Location location) {
-		String msg = "Updated Location: " + Double.toString(location.getLatitude()) + "," 
-				+ Double.toString(location.getLongitude());
-		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-		
-	}
-	@Override
-	public void onProviderDisabled(String provider) {
-	}
-	@Override
-	public void onProviderEnabled(String provider) {
-	}
-	@Override
-	public void onStatusChanged(String provider, int status, Bundle extras) {
 	}
 	
 	public void onHistory(MenuItem mi) {
