@@ -52,6 +52,8 @@ public class Restaurant extends Model implements Serializable {
 	private String yelp_url;
 	@Column(name="viewedAt")
 	private Long viewedAt;
+	@Column(name="user_rating")
+	private float userRating;
 
 	public Restaurant() {
 		super();
@@ -100,6 +102,10 @@ public class Restaurant extends Model implements Serializable {
 		return address + ", " + city + ", " + state;
 	}
 	
+	public float getUserRating() {
+		return userRating;
+	}
+	
 	public void setViewed() {
 		this.viewedAt = System.currentTimeMillis();
 		this.save();
@@ -133,6 +139,7 @@ public class Restaurant extends Model implements Serializable {
 			//r.longitude = jsonObject.getDouble("longitude");
 			r.zip = jsonObject.getJSONObject("location").getString("postal_code"); // could be "zip"
 			r.review_count = jsonObject.getInt("review_count");
+			r.userRating = -1; // sentinel value for "not set yet"
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -164,5 +171,9 @@ public class Restaurant extends Model implements Serializable {
 	
 	public static ArrayList<Restaurant> getHistory() {
 		return new Select().from(Restaurant.class).orderBy("viewedAt DESC").limit("30").execute();
+	}
+	
+	public static Restaurant getMostRecentViewed() {
+		return new Select().from(Restaurant.class).orderBy("viewedAt DESC").where("userRating").limit("1").executeSingle();
 	}
 }
