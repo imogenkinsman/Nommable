@@ -5,5 +5,5 @@
         android:icon="@drawable/ic_action_collection"
         android:showAsAction="ifRoom|withText"
         android:onClick="onHistory"
-        android:title="history"/>
+        android:title="@string/history"/>
 </menu>

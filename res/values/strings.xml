@@ -17,5 +17,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="feel_like_eating">I feel like eating</string>
     <string name="minimun_rating">Minimum Rating</string>
+    <string name="history">History</string>
 
 </resources>

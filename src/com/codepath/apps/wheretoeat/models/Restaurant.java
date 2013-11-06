@@ -96,6 +96,10 @@ public class Restaurant extends Model implements Serializable {
 		return yelp_url;
 	}
 	
+	public String getFullAddress() {
+		return address + ", " + city + ", " + state;
+	}
+	
 	public void setViewed() {
 		this.viewedAt = System.currentTimeMillis();
 		this.save();
