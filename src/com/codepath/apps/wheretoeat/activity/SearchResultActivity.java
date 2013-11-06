@@ -213,4 +213,9 @@ public class SearchResultActivity extends FragmentActivity {
 		intent.setData(Uri.parse(data));
 		startActivity(intent);
 	}
+	public void onTryAgain(View v) {
+		Intent i = new Intent(SearchResultActivity.this, SearchActivity.class);
+		i.putExtra("last restaurant", restaurant);
+		startActivity(i);
+	}
 }
