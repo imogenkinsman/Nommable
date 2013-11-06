@@ -8,6 +8,7 @@ import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ListView;
@@ -93,6 +94,7 @@ public class HistoryActivity extends Activity {
 		actionBar.addTab(tab1);
 		actionBar.addTab(tab2);
 		actionBar.selectTab(tab1);
+		
 	}
 	
 }
