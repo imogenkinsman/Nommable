@@ -199,9 +199,9 @@ containing a value of this type.
         public static final int witewall_3=0x7f020026;
     }
     public static final class id {
-        public static final int action_settings=0x7f050013;
+        public static final int action_settings=0x7f050014;
         public static final int btnSearch=0x7f050008;
-        public static final int history=0x7f050014;
+        public static final int history=0x7f050015;
         public static final int hybrid=0x7f050004;
         public static final int ivRestaurant=0x7f050012;
         public static final int launch=0x7f050006;
@@ -217,6 +217,7 @@ containing a value of this type.
         public static final int textView1=0x7f050009;
         public static final int textView2=0x7f05000b;
         public static final int tvCityState=0x7f050011;
+        public static final int tvRestAddress=0x7f050013;
         public static final int tvRestName=0x7f05000e;
         public static final int tvRestPhone=0x7f05000f;
         public static final int tvStreetAddress=0x7f050010;

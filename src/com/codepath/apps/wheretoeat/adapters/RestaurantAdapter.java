@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView.FindListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.codepath.apps.wheretoeat.R;
 import com.codepath.apps.wheretoeat.models.Restaurant;
@@ -32,6 +33,15 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurant> {
         
         ImageView ivRestaurant = (ImageView) view.findViewById(R.id.ivRestaurant);
         ImageLoader.getInstance().displayImage(restaurant.getImageUrl(), ivRestaurant);
+        
+        TextView tvRestName = (TextView) view.findViewById(R.id.tvRestName);
+        tvRestName.setText(restaurant.getName());
+        
+        TextView tvRestAddress = (TextView) view.findViewById(R.id.tvRestAddress);
+        tvRestAddress.setText(restaurant.getFullAddress());
+        
+        TextView tvRestPhone = (TextView) view.findViewById(R.id.tvRestPhone);
+        tvRestPhone.setText(restaurant.getDisplayPhone());
         
         return view;
 	}
