@@ -80,12 +80,9 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 				try {
 					Log.d("DEBUG", jsonResponse.getJSONArray("businesses").toString());
 					ArrayList<Restaurant> restaurants = Restaurant.fromJson(jsonResponse.getJSONArray("businesses"));
-					Intent i = new Intent(SearchActivity.this, SearchResultActivity.class);
-					i.putExtra("restaurants", restaurants);
-					//send curr location data too
-					i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
-					i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
-					startActivity(i);
+					
+					sendIntent(restaurants);
+					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					Log.d("DEBUG", e.getMessage());
@@ -118,6 +115,17 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 	
 	public void onHistory(MenuItem mi) {
 		Intent i = new Intent(this, HistoryActivity.class);
+		startActivity(i);
+	}
+	private void sendIntent(ArrayList<Restaurant> restaurants) {
+		Restaurant lastone = (Restaurant) getIntent().getSerializableExtra("last restaurant");
+		if( lastone != null && restaurants.contains(lastone)) { 
+			restaurants.remove(restaurants.indexOf(lastone));	
+		}
+		Intent i = new Intent(SearchActivity.this, SearchResultActivity.class);
+		i.putExtra("restaurants", restaurants);
+		i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
+		i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
 		startActivity(i);
 	}
 }
