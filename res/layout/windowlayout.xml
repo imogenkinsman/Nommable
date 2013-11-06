@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark" >
+
+    <TextView
+        android:id="@+id/tvMilesAway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#b32024"
+        android:gravity="center"
+        android:text="1.9"
+        android:textColor="@android:color/white"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/tvMiles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvMilesAway"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tvMilesAway"
+        android:background="#b32024"
+        android:gravity="center"
+        android:text="mi."
+        android:textColor="@android:color/white"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/tvMinFarAway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/tvMinFar"
+        android:layout_below="@+id/tvMinFar"
+        android:background="@android:color/holo_red_dark"
+        android:gravity="center"
+        android:text="min. away"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvMinFar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/tvMiles"
+        android:layout_below="@+id/tvMilesAway"
+        android:background="@android:color/holo_red_dark"
+        android:gravity="center"
+        android:text="4"
+        android:textColor="@android:color/white"
+        android:textSize="48sp" />
+
+    <TextView
+        android:id="@+id/tvRestaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ivRatingSmall"
+        android:layout_alignLeft="@+id/ivRatingSmall"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/background_dark"
+        android:gravity="center"
+        android:text="Restaurant X"
+        android:textColor="@android:color/white"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivRatingSmall"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/ivRatingSmall"
+        android:layout_toRightOf="@+id/ivRatingSmall"
+        android:gravity="left|center_vertical"
+        android:text="Rating: 0"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/ivRatingSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvMinFarAway"
+        android:layout_toRightOf="@+id/tvMinFarAway"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/contentdesc"
+        android:src="@android:drawable/dialog_holo_dark_frame" />
+
+</RelativeLayout>
