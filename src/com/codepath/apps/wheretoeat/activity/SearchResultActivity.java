@@ -203,8 +203,7 @@ public class SearchResultActivity extends FragmentActivity {
 		return String.valueOf((long)((d * 60) / 25));
 	}
 	public void onYelpReview(View v) {
-		String uriString = "http://yelp.com/biz/" + String.valueOf(restaurant.getId());
-		Log.d("DEBUG", "yelp app trigger"+ String.valueOf(restaurant.getId()));
+		String uriString = restaurant.getYelpUrl();
 		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uriString))); 
 	}
 	public void onNavigateMe(View v) {

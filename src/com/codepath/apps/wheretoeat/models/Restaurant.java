@@ -147,6 +147,7 @@ public class Restaurant extends Model implements Serializable {
 			r.userRating = -1; // sentinel value for "not set yet"
 			r.rating = jsonObject.getInt("rating");
 			r.rating_img_url = jsonObject.getString("rating_img_url_large");
+			r.yelp_url = jsonObject.getString("mobile_url");
 		} catch (JSONException e) {
 			e.printStackTrace();
 			return null;
