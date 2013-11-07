@@ -1,12 +1,18 @@
 package com.codepath.apps.wheretoeat.activity;
 
+import java.util.zip.Inflater;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 
 import com.codepath.apps.wheretoeat.R;
+import com.codepath.apps.wheretoeat.models.Restaurant;
 
 public class LaunchActivity extends Activity {
 /**
@@ -29,4 +35,5 @@ public class LaunchActivity extends Activity {
 		Intent i = new Intent(this, SearchActivity.class);
 		startActivity(i);
 	}
+
 }

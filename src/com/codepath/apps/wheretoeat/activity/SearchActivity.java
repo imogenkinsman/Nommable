@@ -13,6 +13,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.codepath.apps.wheretoeat.R;
@@ -28,6 +31,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 public class SearchActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener {
 
 	private LocationClient locationClient;
+	private Spinner categorySpinner;
+	private RatingBar rbarStars;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,15 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
         }
 
         locationClient = new LocationClient(this, this, this);
+        
+        categorySpinner = (Spinner) findViewById(R.id.spinCategory);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.category_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(adapter);
+        
+        rbarStars = (RatingBar) findViewById(R.id.rbarStars);
+        rbarStars.setStepSize(0.5f);
+        rbarStars.setRating(4.0f);
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

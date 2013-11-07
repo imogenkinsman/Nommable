@@ -214,8 +214,12 @@ public class SearchResultActivity extends FragmentActivity {
 		startActivity(intent);
 	}
 	public void onTryAgain(View v) {
-		Intent i = new Intent(SearchResultActivity.this, SearchActivity.class);
-		i.putExtra("last restaurant", restaurant);
-		startActivity(i);
+		Random random = new Random();
+		restaurant = restaurants.get(random.nextInt(restaurants.size()));
+		setRestaurantToView(restaurant);
+		
+//		Intent i = new Intent(SearchResultActivity.this, SearchActivity.class);
+//		i.putExtra("last restaurant", restaurant);
+//		startActivity(i);
 	}
 }
