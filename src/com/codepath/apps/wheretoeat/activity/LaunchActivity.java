@@ -21,6 +21,7 @@ public class LaunchActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().hide();
 		setContentView(R.layout.activity_launch);
 	}
 
@@ -30,7 +31,7 @@ public class LaunchActivity extends Activity {
 		getMenuInflater().inflate(R.menu.launch, menu);
 		return true;
 	}
-	//button attached to Launch/Intro Screen
+	
 	public void launch(View v) {
 		Intent i = new Intent(this, SearchActivity.class);
 		startActivity(i);
