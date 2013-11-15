@@ -119,7 +119,7 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 
 	@Override
 	public void onConnected(Bundle connectionHint) {
-
+		Log.d("DEBUG", "locationClient connected");
 	}
 
 	@Override
