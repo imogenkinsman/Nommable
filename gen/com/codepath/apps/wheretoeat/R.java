@@ -219,7 +219,8 @@ containing a value of this type.
         public static final int red_rectangle=0x7f020024;
         public static final int restaurant_item_background=0x7f020025;
         public static final int states_red_button=0x7f020026;
-        public static final int witewall_3=0x7f020027;
+        public static final int sushi_bg=0x7f020027;
+        public static final int witewall_3=0x7f020028;
     }
     public static final class id {
         public static final int action_settings=0x7f050020;
@@ -392,6 +393,7 @@ containing a value of this type.
         public static final int launch=0x7f060020;
         public static final int login_label=0x7f06001c;
         public static final int minimun_rating=0x7f060028;
+        public static final int tap_here_to_start=0x7f06002a;
         public static final int title_activity_history=0x7f060024;
         public static final int title_activity_map=0x7f060021;
         public static final int title_activity_search=0x7f06001d;

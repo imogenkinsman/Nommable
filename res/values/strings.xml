@@ -17,5 +17,6 @@
     <string name="feel_like_eating">I feel like eating</string>
     <string name="minimun_rating">Minimum Rating</string>
     <string name="history">History</string>
+    <string name="tap_here_to_start">Tap here to Start</string>
 
 </resources>
