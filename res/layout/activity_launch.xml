@@ -9,14 +9,22 @@
     tools:context=".LaunchActivity"
     android:background="@drawable/sushi_bg" >
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/icon" />
+
     <Button
         android:id="@+id/launch"
         style="@style/RedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="65dp"
+        android:layout_centerVertical="true"
         android:onClick="launch"
         android:text="@string/tap_here_to_start" />
 
