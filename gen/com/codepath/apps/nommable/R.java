@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.codepath.apps.wheretoeat;
+package com.codepath.apps.nommable;
 
 public final class R {
     public static final class array {
@@ -439,9 +439,9 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #AdsAttrs_adSize com.codepath.apps.wheretoeat:adSize}</code></td><td>
+           <tr><td><code>{@link #AdsAttrs_adSize com.codepath.apps.nommable:adSize}</code></td><td>
     The size of the ad.</td></tr>
-           <tr><td><code>{@link #AdsAttrs_adUnitId com.codepath.apps.wheretoeat:adUnitId}</code></td><td> The ad unit ID.</td></tr>
+           <tr><td><code>{@link #AdsAttrs_adUnitId com.codepath.apps.nommable:adUnitId}</code></td><td> The ad unit ID.</td></tr>
            </table>
            @see #AdsAttrs_adSize
            @see #AdsAttrs_adUnitId
@@ -466,7 +466,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.codepath.apps.wheretoeat:adSize
+          @attr name com.codepath.apps.nommable:adSize
         */
         public static final int AdsAttrs_adSize = 0;
         /**
@@ -482,7 +482,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.codepath.apps.wheretoeat:adUnitId
+          @attr name com.codepath.apps.nommable:adUnitId
         */
         public static final int AdsAttrs_adUnitId = 1;
         /** Attributes that can be used with a MapAttrs.
@@ -491,20 +491,20 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #MapAttrs_cameraBearing com.codepath.apps.wheretoeat:cameraBearing}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLat com.codepath.apps.wheretoeat:cameraTargetLat}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLng com.codepath.apps.wheretoeat:cameraTargetLng}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTilt com.codepath.apps.wheretoeat:cameraTilt}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraZoom com.codepath.apps.wheretoeat:cameraZoom}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_mapType com.codepath.apps.wheretoeat:mapType}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiCompass com.codepath.apps.wheretoeat:uiCompass}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiRotateGestures com.codepath.apps.wheretoeat:uiRotateGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiScrollGestures com.codepath.apps.wheretoeat:uiScrollGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiTiltGestures com.codepath.apps.wheretoeat:uiTiltGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomControls com.codepath.apps.wheretoeat:uiZoomControls}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomGestures com.codepath.apps.wheretoeat:uiZoomGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_useViewLifecycle com.codepath.apps.wheretoeat:useViewLifecycle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_zOrderOnTop com.codepath.apps.wheretoeat:zOrderOnTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraBearing com.codepath.apps.nommable:cameraBearing}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLat com.codepath.apps.nommable:cameraTargetLat}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLng com.codepath.apps.nommable:cameraTargetLng}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTilt com.codepath.apps.nommable:cameraTilt}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraZoom com.codepath.apps.nommable:cameraZoom}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_mapType com.codepath.apps.nommable:mapType}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiCompass com.codepath.apps.nommable:uiCompass}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiRotateGestures com.codepath.apps.nommable:uiRotateGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiScrollGestures com.codepath.apps.nommable:uiScrollGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiTiltGestures com.codepath.apps.nommable:uiTiltGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomControls com.codepath.apps.nommable:uiZoomControls}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomGestures com.codepath.apps.nommable:uiZoomGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_useViewLifecycle com.codepath.apps.nommable:useViewLifecycle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_zOrderOnTop com.codepath.apps.nommable:zOrderOnTop}</code></td><td></td></tr>
            </table>
            @see #MapAttrs_cameraBearing
            @see #MapAttrs_cameraTargetLat
@@ -528,7 +528,7 @@ containing a value of this type.
             0x7f01000e, 0x7f01000f
         };
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#cameraBearing}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#cameraBearing}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -538,11 +538,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:cameraBearing
+          @attr name com.codepath.apps.nommable:cameraBearing
         */
         public static final int MapAttrs_cameraBearing = 1;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#cameraTargetLat}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#cameraTargetLat}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -552,11 +552,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:cameraTargetLat
+          @attr name com.codepath.apps.nommable:cameraTargetLat
         */
         public static final int MapAttrs_cameraTargetLat = 2;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#cameraTargetLng}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#cameraTargetLng}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -566,11 +566,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:cameraTargetLng
+          @attr name com.codepath.apps.nommable:cameraTargetLng
         */
         public static final int MapAttrs_cameraTargetLng = 3;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#cameraTilt}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#cameraTilt}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -580,11 +580,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:cameraTilt
+          @attr name com.codepath.apps.nommable:cameraTilt
         */
         public static final int MapAttrs_cameraTilt = 4;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#cameraZoom}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#cameraZoom}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -594,11 +594,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:cameraZoom
+          @attr name com.codepath.apps.nommable:cameraZoom
         */
         public static final int MapAttrs_cameraZoom = 5;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#mapType}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#mapType}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -614,11 +614,11 @@ containing a value of this type.
 <tr><td><code>terrain</code></td><td>3</td><td></td></tr>
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
-          @attr name com.codepath.apps.wheretoeat:mapType
+          @attr name com.codepath.apps.nommable:mapType
         */
         public static final int MapAttrs_mapType = 0;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#uiCompass}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#uiCompass}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -628,11 +628,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:uiCompass
+          @attr name com.codepath.apps.nommable:uiCompass
         */
         public static final int MapAttrs_uiCompass = 6;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#uiRotateGestures}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#uiRotateGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -642,11 +642,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:uiRotateGestures
+          @attr name com.codepath.apps.nommable:uiRotateGestures
         */
         public static final int MapAttrs_uiRotateGestures = 7;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#uiScrollGestures}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#uiScrollGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -656,11 +656,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:uiScrollGestures
+          @attr name com.codepath.apps.nommable:uiScrollGestures
         */
         public static final int MapAttrs_uiScrollGestures = 8;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#uiTiltGestures}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#uiTiltGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -670,11 +670,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:uiTiltGestures
+          @attr name com.codepath.apps.nommable:uiTiltGestures
         */
         public static final int MapAttrs_uiTiltGestures = 9;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#uiZoomControls}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#uiZoomControls}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -684,11 +684,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:uiZoomControls
+          @attr name com.codepath.apps.nommable:uiZoomControls
         */
         public static final int MapAttrs_uiZoomControls = 10;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#uiZoomGestures}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#uiZoomGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -698,11 +698,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:uiZoomGestures
+          @attr name com.codepath.apps.nommable:uiZoomGestures
         */
         public static final int MapAttrs_uiZoomGestures = 11;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#useViewLifecycle}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#useViewLifecycle}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -712,11 +712,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:useViewLifecycle
+          @attr name com.codepath.apps.nommable:useViewLifecycle
         */
         public static final int MapAttrs_useViewLifecycle = 12;
         /**
-          <p>This symbol is the offset where the {@link com.codepath.apps.wheretoeat.R.attr#zOrderOnTop}
+          <p>This symbol is the offset where the {@link com.codepath.apps.nommable.R.attr#zOrderOnTop}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -726,7 +726,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.codepath.apps.wheretoeat:zOrderOnTop
+          @attr name com.codepath.apps.nommable:zOrderOnTop
         */
         public static final int MapAttrs_zOrderOnTop = 13;
     };

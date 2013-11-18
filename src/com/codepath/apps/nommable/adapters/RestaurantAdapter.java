@@ -1,4 +1,4 @@
-package com.codepath.apps.wheretoeat.adapters;
+package com.codepath.apps.nommable.adapters;
 
 import java.util.List;
 
@@ -6,13 +6,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.codepath.apps.wheretoeat.R;
-import com.codepath.apps.wheretoeat.models.Restaurant;
+import com.codepath.apps.nommable.R;
+import com.codepath.apps.nommable.models.Restaurant;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class RestaurantAdapter extends ArrayAdapter<Restaurant> {

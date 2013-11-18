@@ -1,4 +1,4 @@
-package com.codepath.apps.wheretoeat.activity;
+package com.codepath.apps.nommable.activity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,8 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.codepath.apps.wheretoeat.R;
-import com.codepath.apps.wheretoeat.models.Restaurant;
+import com.codepath.apps.nommable.R;
+import com.codepath.apps.nommable.models.Restaurant;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;

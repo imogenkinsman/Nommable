@@ -1,4 +1,4 @@
-package com.codepath.apps.wheretoeat.models;
+package com.codepath.apps.nommable.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;

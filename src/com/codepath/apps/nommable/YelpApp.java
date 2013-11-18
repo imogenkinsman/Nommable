@@ -1,4 +1,4 @@
-package com.codepath.apps.wheretoeat;
+package com.codepath.apps.nommable;
 
 import android.content.Context;
 

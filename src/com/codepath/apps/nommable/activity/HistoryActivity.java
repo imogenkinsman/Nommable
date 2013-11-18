@@ -1,4 +1,4 @@
-package com.codepath.apps.wheretoeat.activity;
+package com.codepath.apps.nommable.activity;
 
 import java.util.ArrayList;
 
@@ -8,14 +8,13 @@ import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.Activity;
 import android.app.FragmentTransaction;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ListView;
 
-import com.codepath.apps.wheretoeat.R;
-import com.codepath.apps.wheretoeat.adapters.RestaurantAdapter;
-import com.codepath.apps.wheretoeat.models.Restaurant;
+import com.codepath.apps.nommable.R;
+import com.codepath.apps.nommable.adapters.RestaurantAdapter;
+import com.codepath.apps.nommable.models.Restaurant;
 
 @SuppressLint("NewApi")
 public class HistoryActivity extends Activity {

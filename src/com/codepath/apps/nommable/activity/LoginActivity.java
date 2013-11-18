@@ -1,12 +1,12 @@
-package com.codepath.apps.wheretoeat.activity;
+package com.codepath.apps.nommable.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
-import com.codepath.apps.wheretoeat.R;
-import com.codepath.apps.wheretoeat.YelpClient;
+import com.codepath.apps.nommable.R;
+import com.codepath.apps.nommable.YelpClient;
 import com.codepath.oauth.OAuthLoginActivity;
 
 /**
