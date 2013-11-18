@@ -43,7 +43,7 @@
         <!-- ** Here is the our own key. ** -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBVWNUjQuULkzcnVYhwPm7JX1lJIpwF5yQ" />
+            android:value="AIzaSyAlw8a12JRnS8EgUVSWr9MX4SMXsILvykc" />
         <!-- MapView for display -->
 		<uses-library android:name="com.google.android.maps" />
 		
