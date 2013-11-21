@@ -2,6 +2,7 @@ package com.codepath.apps.nommable;
 
 import android.content.Context;
 
+import com.codepath.apps.nommable.network.YelpClient;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -15,13 +16,13 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
  *     // use client to send requests to API
  *     
  */
-public class YelpApp extends com.activeandroid.app.Application {
+public class NommableApp extends com.activeandroid.app.Application {
 	private static Context context;
 	
     @Override
     public void onCreate() {
         super.onCreate();
-        YelpApp.context = this;
+        NommableApp.context = this;
         
         // Create global configuration and initialize ImageLoader with this configuration
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder().
@@ -33,7 +34,7 @@ public class YelpApp extends com.activeandroid.app.Application {
     }
     
     public static YelpClient getRestClient() {
-    	return (YelpClient) YelpClient.getInstance(YelpClient.class, YelpApp.context);
+    	return (YelpClient) YelpClient.getInstance(YelpClient.class, NommableApp.context);
     }
     
 }

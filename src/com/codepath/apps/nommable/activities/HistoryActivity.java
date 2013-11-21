@@ -1,4 +1,4 @@
-package com.codepath.apps.nommable.activity;
+package com.codepath.apps.nommable.activities;
 
 import java.util.ArrayList;
 

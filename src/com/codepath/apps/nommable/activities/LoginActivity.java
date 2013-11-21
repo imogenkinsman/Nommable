@@ -1,4 +1,4 @@
-package com.codepath.apps.nommable.activity;
+package com.codepath.apps.nommable.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.View;
 
 import com.codepath.apps.nommable.R;
-import com.codepath.apps.nommable.YelpClient;
+import com.codepath.apps.nommable.network.YelpClient;
 import com.codepath.oauth.OAuthLoginActivity;
 
 /**

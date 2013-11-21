@@ -1,4 +1,4 @@
-package com.codepath.apps.nommable.activity;
+package com.codepath.apps.nommable.activities;
 
 import android.app.Activity;
 import android.content.Intent;

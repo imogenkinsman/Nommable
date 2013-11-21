@@ -6,7 +6,7 @@
 
     <!-- Copied from Google Maps Library/AndroidManifest.xml. -->
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="10"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="com.codepath.apps.nommable.permission.MAPS_RECEIVE" />
@@ -25,7 +25,7 @@
     <!-- End of copy. -->
 
     <application
-        android:name="com.codepath.apps.nommable.YelpApp"
+        android:name="com.codepath.apps.nommable.NommableApp"
         android:allowBackup="true"
         android:icon="@drawable/nommable_launcher"
         android:label="@string/app_name"
@@ -48,7 +48,7 @@
 		<uses-library android:name="com.google.android.maps" />
 		
         <activity
-            android:name="com.codepath.apps.nommable.activity.LaunchActivity"
+            android:name="com.codepath.apps.nommable.activities.LaunchActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -67,19 +67,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.codepath.apps.nommable.activity.SearchActivity"
+            android:name="com.codepath.apps.nommable.activities.SearchActivity"
             android:label="@string/title_activity_search" >
         </activity>
         <activity
-            android:name="com.codepath.apps.nommable.activity.SearchResultActivity"
+            android:name="com.codepath.apps.nommable.activities.SearchResultActivity"
             android:label="@string/title_activity_search_result" >
         </activity>
         <activity
-            android:name="com.codepath.apps.nommable.activity.MapActivity"
+            android:name="com.codepath.apps.nommable.activities.MapActivity"
             android:label="@string/title_activity_map" >
         </activity>
         <activity
-            android:name="com.codepath.apps.nommable.activity.HistoryActivity"
+            android:name="com.codepath.apps.nommable.activities.HistoryActivity"
             android:label="@string/title_activity_history" >
         </activity>
     </application>

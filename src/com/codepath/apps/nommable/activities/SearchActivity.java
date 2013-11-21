@@ -1,4 +1,4 @@
-package com.codepath.apps.nommable.activity;
+package com.codepath.apps.nommable.activities;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.codepath.apps.nommable.R;
-import com.codepath.apps.nommable.YelpApp;
+import com.codepath.apps.nommable.NommableApp;
 import com.codepath.apps.nommable.models.Restaurant;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
@@ -87,7 +87,7 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 			return;
 		}
 		
-		YelpApp.getRestClient().search("restaurant", loc, new JsonHttpResponseHandler() {
+		NommableApp.getRestClient().search("restaurant", loc, new JsonHttpResponseHandler() {
 			
 			@Override
 			public void onSuccess(int httpResponse, JSONObject jsonResponse) {

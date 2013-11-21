@@ -1,4 +1,4 @@
-package com.codepath.apps.nommable;
+package com.codepath.apps.nommable.network;
 
 import org.scribe.builder.api.Api;
 import org.scribe.model.Token;

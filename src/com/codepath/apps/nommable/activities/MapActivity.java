@@ -1,4 +1,4 @@
-package com.codepath.apps.nommable.activity;
+package com.codepath.apps.nommable.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;

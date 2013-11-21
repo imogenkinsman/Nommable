@@ -19,6 +19,9 @@ local.properties
 # Maven
 target/
 
+# secret keys
+secrets.xml
+
 # External tool builders
 .externalToolBuilders/
 
