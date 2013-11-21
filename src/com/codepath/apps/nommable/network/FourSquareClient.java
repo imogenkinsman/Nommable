@@ -1,10 +1,11 @@
 package com.codepath.apps.nommable.network;
 
-import android.app.KeyguardManager;
+import android.content.Context;
+import android.content.res.Resources;
 import android.location.Location;
 import android.util.Log;
 
-import com.codepath.apps.nommable.helpers.Keymaster;
+import com.codepath.apps.nommable.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -17,12 +18,19 @@ import com.loopj.android.http.RequestParams;
  */
 
 public class FourSquareClient {
-    public static final String CLIENT_ID = Keymaster.getClientId();
-    public static final String CLIENT_SECRET = Keymaster.getClientSecret();
+    private String clientId;
+    private String clientSecret;
+    private static FourSquareClient instance;
 
     private static final String BASE_URL = "https://api.foursquare.com/v2/";
     private static AsyncHttpClient client = new AsyncHttpClient();
 
+    public FourSquareClient(Context context) {
+    	Resources res = context.getResources();
+    	clientId = res.getString(R.string.clientid);
+    	clientSecret = res.getString(R.string.clientsecret);
+    }
+    
     /**
      * Makes a get request to FourSquare for a list of locations.
      * The HTTP response is an array of compact venues.
@@ -31,7 +39,7 @@ public class FourSquareClient {
      * @param location the user's current location
      * @param handler an AsyncHttpResponseHandler that performs some action upon receiving a response
      */
-    public static void search(Location location, AsyncHttpResponseHandler handler) {
+    public void search(Location location, AsyncHttpResponseHandler handler) {
     	Log.d("DEBUG", "Starting FourSquare search");
     	String apiUrl = BASE_URL + "venues/search";
     	RequestParams params = new RequestParams();
@@ -39,8 +47,8 @@ public class FourSquareClient {
     	params.put("intent", "browse");
     	params.put("ll", Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude()));
     	params.put("radius", "1600"); // ~1 mile
-    	params.put("client_id", CLIENT_ID);
-    	params.put("client_secret", CLIENT_SECRET);
+    	params.put("client_id", clientId);
+    	params.put("client_secret", clientSecret);
     	client.get(apiUrl, params, handler);
     }
     
@@ -52,6 +60,13 @@ public class FourSquareClient {
      */
     public static void getCategories(AsyncHttpResponseHandler handler) {
     	Log.d("DEBUG", "Getting FourSquare venue categories");  	
+    }
+    
+    public static FourSquareClient getInstance(Context context) {
+    	if (instance == null) {
+    		instance = new FourSquareClient(context);
+    	}
+		return instance;
     }
 
 }

@@ -2,6 +2,7 @@ package com.codepath.apps.nommable.activities;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.codepath.apps.nommable.R;
 import com.codepath.apps.nommable.NommableApp;
 import com.codepath.apps.nommable.models.Restaurant;
+import com.codepath.apps.nommable.network.FourSquareClient;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
@@ -87,29 +89,36 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 			return;
 		}
 		
-		NommableApp.getRestClient().search("restaurant", loc, new JsonHttpResponseHandler() {
-			
+		NommableApp.getRestClient().search(loc, new JsonHttpResponseHandler() {
 			@Override
-			public void onSuccess(int httpResponse, JSONObject jsonResponse) {
-				try {
-					Log.d("DEBUG", jsonResponse.getJSONArray("businesses").toString());
-					ArrayList<Restaurant> restaurants = Restaurant.fromJson(jsonResponse.getJSONArray("businesses"));
-					
-					sendIntent(restaurants);
-					
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					Log.d("DEBUG", e.getMessage());
-				}
+			public void onSuccess(JSONObject jsonResponse) {
+				// TODO Auto-generated method stub
+				Log.d("DEBUG", jsonResponse.toString());
 			}
-						
-			@Override
-			public void onFailure(Throwable e, JSONObject error) {
-				Log.e("ERROR", e.toString());
-				Toast.makeText(SearchActivity.this, "Unable to access Yelp", Toast.LENGTH_SHORT).show();
-			}
-			
 		});
+		
+//		NommableApp.getRestClient().search("restaurant", loc, new JsonHttpResponseHandler() {
+//			
+//			@Override
+//			public void onSuccess(int httpResponse, JSONObject jsonResponse) {
+//				try {
+//					Log.d("DEBUG", jsonResponse.getJSONArray("businesses").toString());
+//					ArrayList<Restaurant> restaurants = Restaurant.fromJson(jsonResponse.getJSONArray("businesses"));
+//					
+//					sendIntent(restaurants);
+//					
+//				} catch (JSONException e) {
+//					Log.d("DEBUG", e.getMessage());
+//				}
+//			}
+//						
+//			@Override
+//			public void onFailure(Throwable e, JSONObject error) {
+//				Log.e("ERROR", e.toString());
+//				Toast.makeText(SearchActivity.this, "Unable to access Yelp", Toast.LENGTH_SHORT).show();
+//			}
+//			
+//		});
 	}
 
 	@Override
@@ -131,17 +140,17 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 		Intent i = new Intent(this, HistoryActivity.class);
 		startActivity(i);
 	}
-	private void sendIntent(ArrayList<Restaurant> restaurants) {
-		Restaurant lastone = (Restaurant) getIntent().getSerializableExtra("last restaurant");
-		if( lastone != null && restaurants.contains(lastone)) { 
-			restaurants.remove(restaurants.indexOf(lastone));	
-		}
-		Intent i = new Intent(SearchActivity.this, SearchResultActivity.class);
-		i.putExtra("restaurants", restaurants);
-		i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
-		i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
-		startActivity(i);
-	}
+//	private void sendIntent(ArrayList<Restaurant> restaurants) {
+//		Restaurant lastone = (Restaurant) getIntent().getSerializableExtra("last restaurant");
+//		if( lastone != null && restaurants.contains(lastone)) { 
+//			restaurants.remove(restaurants.indexOf(lastone));	
+//		}
+//		Intent i = new Intent(SearchActivity.this, SearchResultActivity.class);
+//		i.putExtra("restaurants", restaurants);
+//		i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
+//		i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
+//		startActivity(i);
+//	}
 }
 
 

@@ -291,8 +291,8 @@ containing a value of this type.
         public static final int search_result=0x7f0b0007;
     }
     public static final class string {
-        public static final int action_settings=0x7f06001b;
-        public static final int app_name=0x7f06001a;
+        public static final int action_settings=0x7f06001d;
+        public static final int app_name=0x7f06001c;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
@@ -316,6 +316,8 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f060014;
+        public static final int clientid=0x7f06001a;
+        public static final int clientsecret=0x7f06001b;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -387,21 +389,21 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
-        public static final int contentdesc=0x7f060026;
-        public static final int feel_like_eating=0x7f060027;
-        public static final int find_restaurant=0x7f06001f;
-        public static final int hello_world=0x7f060025;
-        public static final int history=0x7f060029;
-        public static final int launch=0x7f060020;
-        public static final int login_label=0x7f06001c;
-        public static final int minimun_rating=0x7f060028;
-        public static final int tap_here_to_start=0x7f06002a;
-        public static final int title_activity_history=0x7f060024;
-        public static final int title_activity_map=0x7f060021;
-        public static final int title_activity_search=0x7f06001d;
-        public static final int title_activity_search_result=0x7f06001e;
-        public static final int try_again=0x7f060023;
-        public static final int what_else=0x7f060022;
+        public static final int contentdesc=0x7f060028;
+        public static final int feel_like_eating=0x7f060029;
+        public static final int find_restaurant=0x7f060021;
+        public static final int hello_world=0x7f060027;
+        public static final int history=0x7f06002b;
+        public static final int launch=0x7f060022;
+        public static final int login_label=0x7f06001e;
+        public static final int minimun_rating=0x7f06002a;
+        public static final int tap_here_to_start=0x7f06002c;
+        public static final int title_activity_history=0x7f060026;
+        public static final int title_activity_map=0x7f060023;
+        public static final int title_activity_search=0x7f06001f;
+        public static final int title_activity_search_result=0x7f060020;
+        public static final int try_again=0x7f060025;
+        public static final int what_else=0x7f060024;
     }
     public static final class style {
         /** 

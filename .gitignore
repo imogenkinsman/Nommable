@@ -20,7 +20,7 @@ local.properties
 target/
 
 # secret keys
-secrets.xml
+keys.xml
 
 # External tool builders
 .externalToolBuilders/
