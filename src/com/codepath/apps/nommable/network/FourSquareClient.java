@@ -62,6 +62,13 @@ public class FourSquareClient {
     	Log.d("DEBUG", "Getting FourSquare venue categories");  	
     }
     
+    /**
+     * Your standard singleton getter
+     * 
+     * @param context The current context
+     * @return FourSquareClient a FourSquareClient singleton object
+     */
+    
     public static FourSquareClient getInstance(Context context) {
     	if (instance == null) {
     		instance = new FourSquareClient(context);
