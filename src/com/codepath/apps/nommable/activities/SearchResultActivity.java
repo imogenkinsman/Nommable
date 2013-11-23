@@ -136,26 +136,9 @@ public class SearchResultActivity extends FragmentActivity {
 		tvStreetAddress.setText(rest.getAddress());
 		tvCityState.setText(rest.getCity() + ", " + rest.getState());
 
-		Geocoder gcd = new Geocoder(this, Locale.ENGLISH);
-
-		List<Address> addresses = null;
-		try {
-			Log.d("DEBUG", rest.getAddress() + ", " + rest.getCity() + ", " + rest.getState());
-			addresses = gcd.getFromLocationName(
-					rest.getAddress() + ", " + rest.getCity() + ", " + rest.getState(), 1);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		if (addresses != null && addresses.size() > 0) {
-			Log.d("DEBUG", "got address");
-			Address returnedAddress = addresses.get(0);
-
-			if (marker != null) { 
-				marker.remove(); 
-			}
-			addressPosition = new LatLng(returnedAddress.getLatitude(), returnedAddress.getLongitude());
-			showRestaurantOnMap(rest);
-		}
+		addressPosition = new LatLng(rest.getLatitude(), rest.getLongitude());
+		showRestaurantOnMap(rest);
+		
 	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

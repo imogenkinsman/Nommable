@@ -91,10 +91,16 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 			@Override
 			public void onSuccess(JSONObject jsonResponse) {
 				try {
-					//Log.d("DEBUG", Integer.toString(jsonResponse.getJSONObject("response").getJSONArray("groups").getJSONObject(0).getJSONArray("items")));
+					
 					ArrayList<Restaurant> restaurants = Restaurant.fromJson(jsonResponse.getJSONObject("response").getJSONArray("groups")
 							.getJSONObject(0).getJSONArray("items"));
-					Log.d("DEBUG", Integer.toString(restaurants.size()));
+					
+					Intent i = new Intent(SearchActivity.this, SearchResultActivity.class);
+					i.putExtra("restaurants", restaurants);
+					i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
+					i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
+					startActivity(i);
+					
 				} catch (JSONException e) {
 					Log.d("DEBUG", e.getMessage());
 				}
@@ -144,17 +150,6 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 		Intent i = new Intent(this, HistoryActivity.class);
 		startActivity(i);
 	}
-//	private void sendIntent(ArrayList<Restaurant> restaurants) {
-//		Restaurant lastone = (Restaurant) getIntent().getSerializableExtra("last restaurant");
-//		if( lastone != null && restaurants.contains(lastone)) { 
-//			restaurants.remove(restaurants.indexOf(lastone));	
-//		}
-//		Intent i = new Intent(SearchActivity.this, SearchResultActivity.class);
-//		i.putExtra("restaurants", restaurants);
-//		i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
-//		i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
-//		startActivity(i);
-//	}
 }
 
 
