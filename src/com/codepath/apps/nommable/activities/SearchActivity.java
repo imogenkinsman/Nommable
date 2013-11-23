@@ -2,7 +2,6 @@ package com.codepath.apps.nommable.activities;
 
 import java.util.ArrayList;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,7 +21,6 @@ import android.widget.Toast;
 import com.codepath.apps.nommable.R;
 import com.codepath.apps.nommable.NommableApp;
 import com.codepath.apps.nommable.models.Restaurant;
-import com.codepath.apps.nommable.network.FourSquareClient;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
@@ -89,11 +87,17 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 			return;
 		}
 		
-		NommableApp.getRestClient().search(loc, new JsonHttpResponseHandler() {
+		NommableApp.getRestClient().explore(loc, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject jsonResponse) {
-				// TODO Auto-generated method stub
-				Log.d("DEBUG", jsonResponse.toString());
+				try {
+					//Log.d("DEBUG", Integer.toString(jsonResponse.getJSONObject("response").getJSONArray("groups").getJSONObject(0).getJSONArray("items")));
+					ArrayList<Restaurant> restaurants = Restaurant.fromJson(jsonResponse.getJSONObject("response").getJSONArray("groups")
+							.getJSONObject(0).getJSONArray("items"));
+					Log.d("DEBUG", Integer.toString(restaurants.size()));
+				} catch (JSONException e) {
+					Log.d("DEBUG", e.getMessage());
+				}
 			}
 		});
 		

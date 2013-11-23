@@ -6,7 +6,7 @@
 
     <!-- Copied from Google Maps Library/AndroidManifest.xml. -->
     <uses-sdk
-        android:minSdkVersion="10"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="com.codepath.apps.nommable.permission.MAPS_RECEIVE" />

@@ -110,12 +110,12 @@ public class SearchResultActivity extends FragmentActivity {
 					return v;
 				}
 				r_name.setText(restaurant.getName());
-				r_rating.setText(" Rating: " + String.valueOf(restaurant.getRating()));
-				ImageLoader.getInstance().displayImage(restaurant.getRatingImageUrl(), ivRating);
-				Log.i("GetInfoContents", "rating image url:"+restaurant.getRatingImageUrl());
-				miles_data.setText(String.valueOf(restaurant.getDistance()/1000));
+//				r_rating.setText(" Rating: " + String.valueOf(restaurant.getRating()));
+//				ImageLoader.getInstance().displayImage(restaurant.getRatingImageUrl(), ivRating);
+//				Log.i("GetInfoContents", "rating image url:"+restaurant.getRatingImageUrl());
+//				miles_data.setText(String.valueOf(restaurant.getDistance()/1000));
 				//Log.i("GetInfoContents", String.valueOf(restaurant.getDistance()));
-				min_data.setText(calculateHowLong(restaurant.getDistance()/1000));
+//				min_data.setText(calculateHowLong(restaurant.getDistance()/1000));
 				return v;
 			}
 
@@ -203,8 +203,8 @@ public class SearchResultActivity extends FragmentActivity {
 		return String.valueOf((long)((d * 60) / 25));
 	}
 	public void onYelpReview(View v) {
-		String uriString = restaurant.getYelpUrl();
-		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uriString))); 
+//		String uriString = restaurant.getYelpUrl();
+//		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uriString))); 
 	}
 	public void onNavigateMe(View v) {
 		Intent intent = new Intent().setAction(Intent.ACTION_VIEW);
@@ -216,9 +216,5 @@ public class SearchResultActivity extends FragmentActivity {
 		Random random = new Random();
 		restaurant = restaurants.get(random.nextInt(restaurants.size()));
 		setRestaurantToView(restaurant);
-		
-//		Intent i = new Intent(SearchResultActivity.this, SearchActivity.class);
-//		i.putExtra("last restaurant", restaurant);
-//		startActivity(i);
 	}
 }

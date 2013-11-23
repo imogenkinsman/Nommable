@@ -33,29 +33,18 @@ public class Restaurant extends Model implements Serializable {
 	private String state;
 	@Column(name="zip")
 	private String zip;
-	@Column(name="display_phone")
-	private String display_phone;
+	@Column(name="formattedphone")
+	private String formattedphone;
 	@Column(name="categories")
 	private String categories;
-	@Column(name="is_closed")
-	private boolean is_closed;
-	@Column(name="distance")
-	private long distance;
-	@Column(name="rating")
-	private double rating;
-	@Column(name="review_count")
-	private int review_count;
 	@Column(name="image_url")
 	private String image_url;
-	@Column(name="url")
-	private String yelp_url;
 	@Column(name="viewedAt")
 	private Long viewedAt;
-	@Column(name="user_rating")
-	private float userRating;
-	@Column(name="rating_url")
-	private String rating_img_url;
 
+	/**
+	 * ActiveAndroid requires you to use the superclass constructor.
+	 */
 	public Restaurant() {
 		super();
 	}
@@ -74,17 +63,8 @@ public class Restaurant extends Model implements Serializable {
 	public String getCity() {
 		return city;
 	}
-	public boolean isClosed() {
-		return is_closed;
-	}
-	public long getDistance() {
-		return distance;
-	}
 	public String getDisplayPhone() {
-		return display_phone;
-	}
-	public double getRating() {
-		return rating;
+		return formattedphone;
 	}
 	public double getLatitude() {
 		return latitute;
@@ -95,20 +75,9 @@ public class Restaurant extends Model implements Serializable {
 	public String getImageUrl() {
 		return image_url;
 	}
-	public String getYelpUrl() {
-		return yelp_url;
-	}
 	
 	public String getFullAddress() {
 		return address + ", " + city + ", " + state;
-	}
-	
-	public float getUserRating() {
-		return userRating;
-	}
-	
-	public String getRatingImageUrl(){
-		return rating_img_url;
 	}
 	
 	public void setViewed() {
@@ -116,43 +85,34 @@ public class Restaurant extends Model implements Serializable {
 		this.save();
 	}
 	
+	/**
+	 * Maps JSON response to a Restaurant object
+	 * @param jsonObject
+	 * @return
+	 */
 	public static Restaurant fromJson(JSONObject jsonObject) {
 		Restaurant r = new Restaurant();
-		// Deserialize json into object fields
 		try {
-			JSONObject location = jsonObject.getJSONObject("location");
 			
-			r.id = jsonObject.getString("id");
-			r.name = jsonObject.getString("name");
-			r.display_phone = jsonObject.getString("display_phone");
-			r.image_url = jsonObject.getString("image_url");
+			JSONObject venue = jsonObject.getJSONObject("venue");
+			JSONObject location = venue.getJSONObject("location");
+			JSONObject photo = venue.getJSONObject("photos").getJSONArray("groups").getJSONObject(0).getJSONArray("items").getJSONObject(0);
 			
-			JSONArray jsonAddress = location.getJSONArray("address");
-			r.address = "";
-			for (int i = 0; i < jsonAddress.length(); i++) {
-				r.address += jsonAddress.getString(i);
-				if (i + 1 < jsonAddress.length()) {
-					r.address += ", ";
-				}
-			}
-			
-			r.state = location.getString("state_code");
+			r.id = venue.getString("id");
+			r.name = venue.getString("name");
+			r.formattedphone = venue.getJSONObject("contact").getString("formattedPhone");
+			r.image_url = photo.getString("prefix") + photo.getInt("width") + "x" + photo.getInt("height") + photo.getString("suffix");
+			r.address = location.getString("address");
+			r.state = location.getString("state");
 			r.city = location.getString("city");
-			r.is_closed = jsonObject.getBoolean("is_closed");
-			r.distance = jsonObject.getLong("distance");
-			//r.latitute = jsonObject.getDouble("latitude");
-			//r.longitude = jsonObject.getDouble("longitude");
-			r.zip = jsonObject.getJSONObject("location").getString("postal_code"); // could be "zip"
-			r.review_count = jsonObject.getInt("review_count");
-			r.userRating = -1; // sentinel value for "not set yet"
-			r.rating = jsonObject.getInt("rating");
-			r.rating_img_url = jsonObject.getString("rating_img_url_large");
-			r.yelp_url = jsonObject.getString("mobile_url");
+			r.latitute = location.getDouble("lat");
+			r.longitude = location.getDouble("lng");
+			r.zip = location.getString("postalCode");
+//			r.userRating = -1; // sentinel value for "not set yet"
 		} catch (JSONException e) {
 			e.printStackTrace();
 			return null;
 		}
-		// Return new object
 		return r;
 	}
 	// Decodes array of retaurant json results into restaurant model objects

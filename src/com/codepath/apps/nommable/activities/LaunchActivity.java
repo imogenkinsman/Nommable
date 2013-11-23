@@ -9,9 +9,7 @@ import android.view.View;
 import com.codepath.apps.nommable.R;
 
 public class LaunchActivity extends Activity {
-/**
- * LoginActivity renamed as LauncActivity
- */
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

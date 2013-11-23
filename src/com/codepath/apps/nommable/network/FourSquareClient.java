@@ -48,6 +48,31 @@ public class FourSquareClient {
     	params.put("ll", Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude()));
     	params.put("radius", "1600"); // ~1 mile
     	params.put("client_id", clientId);
+    	params.put("v", "20131123"); // see https://developer.foursquare.com/overview/versioning
+    	params.put("client_secret", clientSecret);
+    	client.get(apiUrl, params, handler);
+    }
+    
+    /**
+     * Makes a get request to FourSquare for recommended venues near a location.
+     * This is similar to their search endpoint, but offers more optional parameters.
+     * See https://developer.foursquare.com/docs/venues/explore
+     * 
+     * @param location the user's current location
+     * @param handler an AsyncHttpResponseHandler for managing the response
+     */
+    public void explore(Location location, AsyncHttpResponseHandler handler) {
+    	Log.d("DEBUG", "Starting FourSquare explore");
+    	String apiUrl = BASE_URL + "venues/explore";
+    	RequestParams params = new RequestParams();
+    	params.put("section", "food");
+    	params.put("limit", "30");
+    	params.put("ll", Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude()));
+    	params.put("radius", "1600"); // ~1 mile
+    	params.put("venuePhotos", "1");
+    	params.put("openNow", "1"); // comment this out when testing at 3am
+    	params.put("v", "20131123"); // see https://developer.foursquare.com/overview/versioning
+    	params.put("client_id", clientId);
     	params.put("client_secret", clientSecret);
     	client.get(apiUrl, params, handler);
     }
