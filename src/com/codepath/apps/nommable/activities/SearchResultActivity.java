@@ -95,7 +95,6 @@ public class SearchResultActivity extends FragmentActivity {
 					Toast.LENGTH_LONG).show();
 		} 
 		map.setMyLocationEnabled(true);
-		map.setMapType(GoogleMap.MAP_TYPE_HYBRID); 
 		map.setInfoWindowAdapter(new InfoWindowAdapter() {
 			@Override
 			public View getInfoContents(Marker m) {
