@@ -71,7 +71,7 @@
             android:label="@string/title_activity_search" >
         </activity>
         <activity
-            android:name="com.codepath.apps.nommable.activities.SearchResultActivity"
+            android:name="com.codepath.apps.nommable.activities.ResultsActivity"
             android:label="@string/title_activity_search_result" >
         </activity>
         <activity

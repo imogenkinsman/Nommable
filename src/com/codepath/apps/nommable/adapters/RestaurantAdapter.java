@@ -25,7 +25,7 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurant> {
         View view = convertView;
         if (view == null) {
                 LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = inflater.inflate(R.layout.restaurant_item, null);
+                view = inflater.inflate(R.layout.item_restaurant, null);
         }
         
         final Restaurant restaurant = getItem(position);

@@ -17,7 +17,7 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
-    <style name="RedButton" parent="@android:style/Widget.Button">
+    <style name="BlueButton" parent="@android:style/Widget.Button">
 	    <item name="android:gravity">center_vertical|center_horizontal</item>
 	    <item name="android:textColor">#FFFFFF</item>
 	    <item name="android:background">@drawable/states_blue_button</item>

@@ -2,6 +2,7 @@ package com.codepath.apps.nommable.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,29 +18,29 @@ public class Restaurant extends Model implements Serializable {
 
 
 	private static final long serialVersionUID = -7256102743331094491L;
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
-	@Column(name="business_id")
+	@Column(name = "business_id")
 	private String id;
 	@Column(name="address")
 	private String address;
-	@Column(name="latitute")
+	@Column(name = "latitute")
 	private double latitute;
-	@Column(name="longitude")
+	@Column(name = "longitude")
 	private double longitude;
-	@Column(name="city")
+	@Column(name = "city")
 	private String city;
-	@Column(name="state")
+	@Column(name = "state")
 	private String state;
-	@Column(name="zip")
+	@Column(name = "zip")
 	private String zip;
-	@Column(name="formattedphone")
+	@Column(name = "formattedphone")
 	private String formattedphone;
-	@Column(name="categories")
+	@Column(name = "categories")
 	private String categories;
-	@Column(name="image_url")
+	@Column(name = "image_url")
 	private String image_url;
-	@Column(name="viewedAt")
+	@Column(name = "viewedAt")
 	private Long viewedAt;
 
 	/**
@@ -136,7 +137,7 @@ public class Restaurant extends Model implements Serializable {
 		return restaurants;
 	}
 	
-	public static ArrayList<Restaurant> getHistory() {
+	public static List<Restaurant> getHistory() {
 		return new Select().from(Restaurant.class).orderBy("viewedAt DESC").limit("30").execute();
 	}
 	

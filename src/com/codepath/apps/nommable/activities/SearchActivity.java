@@ -58,6 +58,7 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
         rbarStars.setStepSize(0.5f);
         rbarStars.setRating(4.0f);
 	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -95,7 +96,7 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 					ArrayList<Restaurant> restaurants = Restaurant.fromJson(jsonResponse.getJSONObject("response").getJSONArray("groups")
 							.getJSONObject(0).getJSONArray("items"));
 					
-					Intent i = new Intent(SearchActivity.this, SearchResultActivity.class);
+					Intent i = new Intent(SearchActivity.this, ResultsActivity.class);
 					i.putExtra("restaurants", restaurants);
 					i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
 					i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
@@ -106,29 +107,6 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 				}
 			}
 		});
-		
-//		NommableApp.getRestClient().search("restaurant", loc, new JsonHttpResponseHandler() {
-//			
-//			@Override
-//			public void onSuccess(int httpResponse, JSONObject jsonResponse) {
-//				try {
-//					Log.d("DEBUG", jsonResponse.getJSONArray("businesses").toString());
-//					ArrayList<Restaurant> restaurants = Restaurant.fromJson(jsonResponse.getJSONArray("businesses"));
-//					
-//					sendIntent(restaurants);
-//					
-//				} catch (JSONException e) {
-//					Log.d("DEBUG", e.getMessage());
-//				}
-//			}
-//						
-//			@Override
-//			public void onFailure(Throwable e, JSONObject error) {
-//				Log.e("ERROR", e.toString());
-//				Toast.makeText(SearchActivity.this, "Unable to access Yelp", Toast.LENGTH_SHORT).show();
-//			}
-//			
-//		});
 	}
 
 	@Override

@@ -1,15 +1,10 @@
 package com.codepath.apps.nommable.activities;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.location.Address;
-import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -35,7 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class SearchResultActivity extends FragmentActivity {
+public class ResultsActivity extends FragmentActivity {
 	TextView tvRestName;
 	TextView tvRestPhone;
 	TextView tvStreetAddress;
@@ -53,7 +48,7 @@ public class SearchResultActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_search_result);
+		setContentView(R.layout.activity_results);
 		getActionBar().hide();
 
 		setup();
@@ -93,7 +88,7 @@ public class SearchResultActivity extends FragmentActivity {
 		if (map == null) {
 			Toast.makeText(this, "Google Maps not available",
 					Toast.LENGTH_LONG).show();
-		} 
+		}
 		map.setMyLocationEnabled(true);
 		map.setInfoWindowAdapter(new InfoWindowAdapter() {
 			@Override

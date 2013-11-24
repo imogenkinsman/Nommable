@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@android:color/background_dark"
-    tools:context=".SearchResultActivity" >
+    tools:context=".ResultsActivity" >
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -74,7 +74,7 @@
 
    <Button
        android:id="@+id/bTryAgain"
-       style="@style/RedButton"
+       style="@style/BlueButton"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_alignLeft="@+id/map"
@@ -102,7 +102,7 @@
        android:layout_above="@+id/bTryAgain"
        android:layout_alignLeft="@+id/map"
        android:layout_alignRight="@+id/map"
-       style="@style/RedButton"
+       style="@style/BlueButton"
        android:onClick="onNavigateMe"
        android:text="Navigate Me" />
 

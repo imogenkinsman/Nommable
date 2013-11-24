@@ -1,6 +1,6 @@
 package com.codepath.apps.nommable.activities;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -19,7 +19,7 @@ import com.codepath.apps.nommable.models.Restaurant;
 @SuppressLint("NewApi")
 public class HistoryActivity extends Activity {
 	RestaurantAdapter rAdapter;
-	ArrayList<Restaurant> restaurants;
+	List<Restaurant> restaurants;
 	ListView lvRestaurants;
 
 	@Override
