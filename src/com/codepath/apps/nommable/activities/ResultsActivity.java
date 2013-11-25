@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 
@@ -39,7 +40,7 @@ public class ResultsActivity extends FragmentActivity {
 		ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
 		pager.setAdapter(new ResultsPagerAdapter(getSupportFragmentManager()));
 		
-//		setup();
+		setup();
 		// insert smart algorithm here - for now, just random from results
 //		Random random = new Random();
 //		restaurant = restaurants.get(random.nextInt(restaurants.size()));
@@ -53,23 +54,23 @@ public class ResultsActivity extends FragmentActivity {
 		return true;
 	}
 //	@SuppressWarnings("unchecked")
-//	private void setup() {
+	private void setup() {
 //		tvRestName = (TextView) findViewById(R.id.tvRestName);
 //		tvRestPhone = (TextView) findViewById(R.id.tvRestPhone);
 //		tvStreetAddress = (TextView) findViewById(R.id.tvStreetAddress);
 //		tvCityState = (TextView) findViewById(R.id.tvCityState);
 //
-//		Bundle b = getIntent().getExtras();
-//		try {
-//			restaurants = (ArrayList<Restaurant>) getIntent().getSerializableExtra("restaurants");
+		Bundle b = getIntent().getExtras();
+		try {
+			restaurants = (ArrayList<Restaurant>) getIntent().getSerializableExtra("restaurants");
 //			double curr_latitude = (Double) b.get("latitude");
 //			double curr_longitude = (Double) b.get("longitude");
 //			mLatLng = new LatLng(curr_latitude, curr_longitude);
 //			Log.d("DEBUG", "bundle success"+ curr_latitude + "," + curr_longitude);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			Log.e("ERROR", "Error at bundle");
-//		}
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.e("ERROR", "Error at bundle");
+		}
 //		//MAP and current LOCATION SETUP
 //		map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 //		// Do a null check to confirm that we have not already instantiated the map.
@@ -108,7 +109,7 @@ public class ResultsActivity extends FragmentActivity {
 //
 //		});
 //		marker = null;
-//	}
+	}
 //
 //	private void setRestaurantToView(Restaurant rest) {
 //		rest.setViewed();
