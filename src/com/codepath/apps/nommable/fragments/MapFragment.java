@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.codepath.apps.nommable.R;
 import com.codepath.apps.nommable.models.Restaurant;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
 
 public class MapFragment extends Fragment {	
 	TextView tvRestName;
@@ -19,6 +21,7 @@ public class MapFragment extends Fragment {
 	TextView tvStreetAddress;
 	TextView tvCityState;
 	ArrayList<Restaurant> restaurants;
+	GoogleMap map;
 	
 	private static View view;
 	
@@ -49,7 +52,17 @@ public class MapFragment extends Fragment {
 		tvRestPhone = (TextView) getActivity().findViewById(R.id.tvRestPhone);
 		tvStreetAddress = (TextView) getActivity().findViewById(R.id.tvStreetAddress);
 		tvCityState = (TextView) getActivity().findViewById(R.id.tvCityState);
+		
+		map = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+		map.setMyLocationEnabled(true);
 	}
+	
+	/**
+	 * Wipe all currently displayed restaurants and update it with new restaurants.
+	 * Use this after getting a new response from FourSquare.
+	 * 
+	 * @param restaurants the new ArrayList of restaurants
+	 */
 	
 	public void updateRestaurants(ArrayList<Restaurant> restaurants) {
 		this.restaurants = restaurants;

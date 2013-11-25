@@ -24,7 +24,6 @@ public class ResultsActivity extends FragmentActivity {
 	ArrayList<Restaurant> restaurants;
 	static Restaurant restaurant = null;
 
-	//GoogleMap map;
 	GoogleMap map;
 	Marker marker;
 	Marker target_marker;
@@ -55,10 +54,6 @@ public class ResultsActivity extends FragmentActivity {
 	}
 //	@SuppressWarnings("unchecked")
 	private void setup() {
-//		tvRestName = (TextView) findViewById(R.id.tvRestName);
-//		tvRestPhone = (TextView) findViewById(R.id.tvRestPhone);
-//		tvStreetAddress = (TextView) findViewById(R.id.tvStreetAddress);
-//		tvCityState = (TextView) findViewById(R.id.tvCityState);
 //
 		Bundle b = getIntent().getExtras();
 		try {
@@ -71,14 +66,7 @@ public class ResultsActivity extends FragmentActivity {
 			e.printStackTrace();
 			Log.e("ERROR", "Error at bundle");
 		}
-//		//MAP and current LOCATION SETUP
-//		map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
-//		// Do a null check to confirm that we have not already instantiated the map.
-//		if (map == null) {
-//			Toast.makeText(this, "Google Maps not available",
-//					Toast.LENGTH_LONG).show();
-//		}
-//		map.setMyLocationEnabled(true);
+
 //		map.setInfoWindowAdapter(new InfoWindowAdapter() {
 //			@Override
 //			public View getInfoContents(Marker m) {
