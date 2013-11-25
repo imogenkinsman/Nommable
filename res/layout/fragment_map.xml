@@ -83,18 +83,6 @@
        android:layout_alignRight="@+id/map"
        android:text="Try Again" />
 
-   <ImageButton
-       android:id="@+id/ibYelpReview"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignRight="@+id/map"
-       android:layout_alignTop="@+id/map"
-       android:background="@android:color/transparent"
-       android:contentDescription="@string/contentdesc"
-       android:onClick="onYelpReview"
-       android:scaleType="fitCenter"
-       android:src="@drawable/ic_yelp_logo" />
-
    <Button
        android:id="@+id/bNavigation"
        android:layout_width="wrap_content"

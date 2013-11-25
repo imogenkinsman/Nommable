@@ -163,10 +163,7 @@ public class ResultsActivity extends FragmentActivity {
 //		//I set current location marker invisible otherwise restaurant infos shows for it too
 //		marker.setVisible(false);
 //	}
-//	public String calculateHowLong(long d) {
-//		//have to find a better solution to calculate min or get data from google map
-//		return String.valueOf((long)((d * 60) / 25));
-//	}
+
 //	public void onYelpReview(View v) {
 ////		String uriString = restaurant.getYelpUrl();
 ////		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uriString))); 
