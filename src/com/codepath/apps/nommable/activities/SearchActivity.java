@@ -98,8 +98,6 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
 					
 					Intent i = new Intent(SearchActivity.this, ResultsActivity.class);
 					i.putExtra("restaurants", restaurants);
-					i.putExtra("latitude", locationClient.getLastLocation().getLatitude());
-					i.putExtra("longitude", locationClient.getLastLocation().getLongitude());
 					startActivity(i);
 					
 				} catch (JSONException e) {

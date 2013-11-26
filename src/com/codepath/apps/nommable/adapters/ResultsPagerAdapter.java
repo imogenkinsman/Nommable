@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class ResultsPagerAdapter extends FragmentPagerAdapter {
+	
+	private static final String[] titles = {"Map", "Details", "Menu"};
 
 	public ResultsPagerAdapter(FragmentManager fm) {
 		super(fm);
@@ -27,6 +29,11 @@ public class ResultsPagerAdapter extends FragmentPagerAdapter {
 	@Override
 	public int getCount() {
 		return 3;
+	}
+	
+	@Override
+	public CharSequence getPageTitle(int position) {
+		return titles[position];
 	}
 
 }

@@ -17,14 +17,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
 public class ResultsActivity extends FragmentActivity {
-	TextView tvRestName;
-	TextView tvRestPhone;
-	TextView tvStreetAddress;
-	TextView tvCityState;
 	ArrayList<Restaurant> restaurants;
 	static Restaurant restaurant = null;
 
-	GoogleMap map;
 	Marker marker;
 	Marker target_marker;
 	LatLng addressPosition;
@@ -55,17 +50,18 @@ public class ResultsActivity extends FragmentActivity {
 //	@SuppressWarnings("unchecked")
 	private void setup() {
 //
-		Bundle b = getIntent().getExtras();
-		try {
-			restaurants = (ArrayList<Restaurant>) getIntent().getSerializableExtra("restaurants");
+		
+		//Bundle b = getIntent().getExtras();
+		//try {
+			//restaurants = (ArrayList<Restaurant>) getIntent().getSerializableExtra("restaurants");
 //			double curr_latitude = (Double) b.get("latitude");
 //			double curr_longitude = (Double) b.get("longitude");
 //			mLatLng = new LatLng(curr_latitude, curr_longitude);
 //			Log.d("DEBUG", "bundle success"+ curr_latitude + "," + curr_longitude);
-		} catch (Exception e) {
-			e.printStackTrace();
-			Log.e("ERROR", "Error at bundle");
-		}
+		//} catch (Exception e) {
+		//	e.printStackTrace();
+		//	Log.e("ERROR", "Error at bundle");
+		//}
 
 //		map.setInfoWindowAdapter(new InfoWindowAdapter() {
 //			@Override
