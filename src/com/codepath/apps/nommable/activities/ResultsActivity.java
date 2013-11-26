@@ -3,27 +3,19 @@ package com.codepath.apps.nommable.activities;
 import java.util.ArrayList;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
-import android.widget.TextView;
 
 import com.codepath.apps.nommable.R;
 import com.codepath.apps.nommable.adapters.ResultsPagerAdapter;
+import com.codepath.apps.nommable.fragments.MapFragment;
 import com.codepath.apps.nommable.models.Restaurant;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 
 public class ResultsActivity extends FragmentActivity {
 	ArrayList<Restaurant> restaurants;
 	static Restaurant restaurant = null;
-
-	Marker marker;
-	Marker target_marker;
-	LatLng addressPosition;
-	LatLng mLatLng;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,53 +39,23 @@ public class ResultsActivity extends FragmentActivity {
 		getMenuInflater().inflate(R.menu.search_result, menu);
 		return true;
 	}
-//	@SuppressWarnings("unchecked")
+	
 	private void setup() {
-//
+//		MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 		
-		//Bundle b = getIntent().getExtras();
-		//try {
-			//restaurants = (ArrayList<Restaurant>) getIntent().getSerializableExtra("restaurants");
-//			double curr_latitude = (Double) b.get("latitude");
-//			double curr_longitude = (Double) b.get("longitude");
-//			mLatLng = new LatLng(curr_latitude, curr_longitude);
-//			Log.d("DEBUG", "bundle success"+ curr_latitude + "," + curr_longitude);
-		//} catch (Exception e) {
-		//	e.printStackTrace();
-		//	Log.e("ERROR", "Error at bundle");
-		//}
 
-//		map.setInfoWindowAdapter(new InfoWindowAdapter() {
-//			@Override
-//			public View getInfoContents(Marker m) {
-//				View v = getLayoutInflater().inflate(R.layout.windowlayout, null);			
-//				TextView r_name = (TextView) v.findViewById(R.id.tvRestaurantName);
-//				TextView r_rating = (TextView) v.findViewById(R.id.tvRating);
-//				ImageView ivRating = (ImageView) v.findViewById(R.id.ivRatingSmall);
-//				TextView miles_data = (TextView) v.findViewById(R.id.tvMilesAway);
-//				TextView min_data = (TextView) v.findViewById(R.id.tvMinFar);
-//				if (restaurant == null) {
-//					Log.i("GetInfoContents", "restaurant is null");
-//					return v;
-//				}
-//				r_name.setText(restaurant.getName());
-////				r_rating.setText(" Rating: " + String.valueOf(restaurant.getRating()));
-////				ImageLoader.getInstance().displayImage(restaurant.getRatingImageUrl(), ivRating);
-////				Log.i("GetInfoContents", "rating image url:"+restaurant.getRatingImageUrl());
-////				miles_data.setText(String.valueOf(restaurant.getDistance()/1000));
-//				//Log.i("GetInfoContents", String.valueOf(restaurant.getDistance()));
-////				min_data.setText(calculateHowLong(restaurant.getDistance()/1000));
-//				return v;
-//			}
-//
-//			@Override
-//			public View getInfoWindow(Marker arg0) {
-//				return null;
-//			}
-//
-//		});
-//		marker = null;
 	}
+	
+	/**
+	 * Provides a reference to fragments in the viewpager.
+	 * 
+	 * @param position the position of the fragment in the viewpager
+	 * @return a reference to the fragment
+	 */
+//	public Fragment findFragmentByPosition(int position) {
+//	    return getSupportFragmentManager().findFragmentByTag(
+//	            "android:switcher:" + pager.getId() + ":" + rpAdapter.getItemId(position));
+//	}
 //
 //	private void setRestaurantToView(Restaurant rest) {
 //		rest.setViewed();

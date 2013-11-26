@@ -66,6 +66,9 @@ public class MapFragment extends Fragment {
 	
 	public void updateRestaurants(ArrayList<Restaurant> restaurants) {
 		this.restaurants = restaurants;
+		
+		// set our initial "selected" restaurant
+		
 	}
 	
 	/**

@@ -1,14 +1,14 @@
 package com.codepath.apps.nommable.adapters;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+
 import com.codepath.apps.nommable.fragments.DetailsFragment;
 import com.codepath.apps.nommable.fragments.MapFragment;
 import com.codepath.apps.nommable.fragments.MenuFragment;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-
-public class ResultsPagerAdapter extends FragmentPagerAdapter {
+public class ResultsPagerAdapter extends FragmentStatePagerAdapter {
 	
 	private static final String[] titles = {"Map", "Details", "Menu"};
 
