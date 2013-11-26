@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,29 @@ public class MapFragment extends Fragment {
 	
 	private static View view;
 	
+	/**
+	 * A common pattern for creating a Fragment with arguments.
+	 * Use this for instantiating the fragment in order to set the initial restaurants.
+	 * 
+	 * @param restaurants
+	 * @return
+	 */
+	
+	public static MapFragment newInstance(ArrayList<Restaurant> restaurants) {
+		MapFragment mapFrag = new MapFragment();
+		Bundle args = new Bundle();
+		args.putSerializable("restaurants", restaurants);
+		mapFrag.setArguments(args);
+		return mapFrag;
+	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		restaurants = (ArrayList<Restaurant>) getArguments().getSerializable("restaurants");
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -38,6 +62,7 @@ public class MapFragment extends Fragment {
 		} catch (InflateException e) {
 			/* map is already there, just return view as it is */
 		}
+		Log.d("DEBUG", "onCreateView in MapFragment");
 		return view;
 	}
 	
@@ -55,6 +80,8 @@ public class MapFragment extends Fragment {
 		
 		map = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.setMyLocationEnabled(true);
+		
+		updateRestarauntText(restaurants.get(0));
 	}
 	
 	/**
