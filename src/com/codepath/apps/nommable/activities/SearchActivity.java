@@ -81,7 +81,7 @@ public class SearchActivity extends Activity implements ConnectionCallbacks, OnC
     }
 
 	public void findRestaurant(View v) {
-		Location loc = locationClient.getLastLocation();
+		final Location loc = locationClient.getLastLocation();
 		
 		if (loc == null){
 			Toast.makeText(this, "Unable to access current location", Toast.LENGTH_LONG).show();

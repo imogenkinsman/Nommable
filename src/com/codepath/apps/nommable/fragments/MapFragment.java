@@ -2,6 +2,7 @@ package com.codepath.apps.nommable.fragments;
 
 import java.util.ArrayList;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,13 +14,18 @@ import android.widget.TextView;
 
 import com.codepath.apps.nommable.R;
 import com.codepath.apps.nommable.models.Restaurant;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
+import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment implements ConnectionCallbacks, OnConnectionFailedListener {
 	TextView tvRestName;
 	TextView tvRestPhone;
 	TextView tvStreetAddress;
@@ -29,6 +35,7 @@ public class MapFragment extends Fragment {
 	ArrayList<Restaurant> restaurants;
 	ArrayList<Marker> markers;
 	
+	private static LocationClient locationClient;
 	private static View view;
 	
 	/**
@@ -50,6 +57,8 @@ public class MapFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		locationClient = new LocationClient(getActivity(), this, this);
 	}
 	
 	@Override
@@ -84,7 +93,6 @@ public class MapFragment extends Fragment {
 		map = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.setMyLocationEnabled(true);
 		updateRestaurants((ArrayList<Restaurant>) getArguments().getSerializable("restaurants"));
-
 	}
 	
 	/**
@@ -129,6 +137,35 @@ public class MapFragment extends Fragment {
 		tvRestPhone.setText(rest.getDisplayPhone());
 		tvStreetAddress.setText(rest.getAddress());
 		tvCityState.setText(rest.getCity() + ", " + rest.getState());
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+        locationClient.connect();
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		
+        locationClient.connect();
+	}
+	
+	@Override
+	public void onConnectionFailed(ConnectionResult result) {
+	}
+
+	@Override
+	public void onConnected(Bundle connectionHint) {
+		Location curLocation = locationClient.getLastLocation();
+		LatLng curLatLng = new LatLng(curLocation.getLatitude(), curLocation.getLongitude());		
+		map.animateCamera(CameraUpdateFactory.newLatLngZoom(curLatLng, 13.5f));
+	}
+
+	@Override
+	public void onDisconnected() {
 	}
 	
 }
