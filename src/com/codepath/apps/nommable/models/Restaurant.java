@@ -87,10 +87,11 @@ public class Restaurant extends Model implements Serializable {
 	}
 	
 	/**
-	 * Maps JSON response to a Restaurant object
-	 * @param jsonObject
-	 * @return
+	 * Maps JSON response to single a Restaurant object
+	 * @param jsonObject JSON response from FourSquare
+	 * @return Restaurant object
 	 */
+	
 	public static Restaurant fromJson(JSONObject jsonObject) {
 		Restaurant r = new Restaurant();
 		try {
@@ -116,7 +117,12 @@ public class Restaurant extends Model implements Serializable {
 		}
 		return r;
 	}
-	// Decodes array of retaurant json results into restaurant model objects
+	/**
+	 * Maps array of retaurant json results into restaurant model objects
+	 * 
+	 * @param jsonArray array of venues from JSON Response
+	 * @return ArrayList of Restaurant objects
+	 */
 	public static ArrayList<Restaurant> fromJson(JSONArray jsonArray) {
 		ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>(jsonArray.length());
 		// Process each result in json array, decode and convert to restaurant object
@@ -137,11 +143,12 @@ public class Restaurant extends Model implements Serializable {
 		return restaurants;
 	}
 	
-	public static List<Restaurant> getHistory() {
+	/**
+	 * Retrieves 30 most recently viewed Restaurants
+	 * @return arraylist of restaurant objects
+	 */
+	public static ArrayList<Restaurant> getHistory() {
 		return new Select().from(Restaurant.class).orderBy("viewedAt DESC").limit("30").execute();
 	}
 	
-	public static Restaurant getMostRecentViewed() {
-		return new Select().from(Restaurant.class).orderBy("viewedAt DESC").where("userRating").limit("1").executeSingle();
-	}
 }
