@@ -3,7 +3,6 @@ package com.codepath.apps.nommable;
 import android.content.Context;
 
 import com.codepath.apps.nommable.network.FourSquareClient;
-import com.codepath.apps.nommable.network.YelpClient;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
