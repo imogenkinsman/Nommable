@@ -66,7 +66,7 @@ public class FourSquareClient {
     	String apiUrl = BASE_URL + "venues/explore";
     	RequestParams params = new RequestParams();
     	params.put("section", "food");
-    	params.put("limit", "30");
+    	params.put("limit", "10");
     	params.put("ll", Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude()));
     	params.put("radius", "1600"); // ~1 mile
     	params.put("venuePhotos", "1");

@@ -15,14 +15,19 @@ import com.codepath.apps.nommable.R;
 import com.codepath.apps.nommable.models.Restaurant;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapFragment extends Fragment {	
+public class MapFragment extends Fragment {
 	TextView tvRestName;
 	TextView tvRestPhone;
 	TextView tvStreetAddress;
 	TextView tvCityState;
-	ArrayList<Restaurant> restaurants;
 	GoogleMap map;
+
+	ArrayList<Restaurant> restaurants;
+	ArrayList<Marker> markers;
 	
 	private static View view;
 	
@@ -45,8 +50,6 @@ public class MapFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		restaurants = (ArrayList<Restaurant>) getArguments().getSerializable("restaurants");
 	}
 	
 	@Override
@@ -80,8 +83,8 @@ public class MapFragment extends Fragment {
 		
 		map = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.setMyLocationEnabled(true);
-		
-		updateRestarauntText(restaurants.get(0));
+		updateRestaurants((ArrayList<Restaurant>) getArguments().getSerializable("restaurants"));
+
 	}
 	
 	/**
@@ -95,7 +98,12 @@ public class MapFragment extends Fragment {
 		this.restaurants = restaurants;
 		
 		// set our initial "selected" restaurant
+		updateRestarauntText(restaurants.get(0));
 		
+		map.clear();
+		for (Restaurant rest : restaurants) {
+			addRestaurantToMap(rest);
+		}
 	}
 	
 	/**
@@ -105,6 +113,9 @@ public class MapFragment extends Fragment {
 	 */
 	
 	private void addRestaurantToMap(Restaurant rest) {
+		map.addMarker(new MarkerOptions()
+			.position(new LatLng(rest.getLatitude(), rest.getLongitude()))
+		);
 	}
 	
 	/**
