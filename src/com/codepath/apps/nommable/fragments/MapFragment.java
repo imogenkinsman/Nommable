@@ -187,7 +187,7 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 	public void onConnected(Bundle connectionHint) {
 		Location curLocation = locationClient.getLastLocation();
 		LatLng curLatLng = new LatLng(curLocation.getLatitude(), curLocation.getLongitude());		
-		map.animateCamera(CameraUpdateFactory.newLatLngZoom(curLatLng, 13.5f));
+		map.moveCamera(CameraUpdateFactory.newLatLngZoom(curLatLng, 13.5f));
 	}
 
 	@Override
