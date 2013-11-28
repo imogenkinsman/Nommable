@@ -20,13 +20,14 @@ import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailed
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapFragment extends Fragment implements ConnectionCallbacks, OnConnectionFailedListener {
+public class MapFragment extends Fragment implements ConnectionCallbacks, OnConnectionFailedListener, OnMarkerClickListener {
 	TextView tvRestName;
 	TextView tvRestPhone;
 	TextView tvStreetAddress;
@@ -35,6 +36,7 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 
 	ArrayList<Restaurant> restaurants;
 	ArrayList<Marker> markers;
+	Marker selectedMarker;
 	
 	private static LocationClient locationClient;
 	private static View view;
@@ -96,6 +98,7 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 		
 		map = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.setMyLocationEnabled(true);
+		map.setOnMarkerClickListener(this);
 		updateRestaurants((ArrayList<Restaurant>) getArguments().getSerializable("restaurants"));
 	}
 	
@@ -118,7 +121,7 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 		
 		// set our initial "selected" restaurant
 		updateRestarauntText(restaurants.get(0));
-		addRestaurantToMap(restaurants.get(0), SELECTED_MARKER_COLOR);	
+		selectedMarker = addRestaurantToMap(restaurants.get(0), SELECTED_MARKER_COLOR);	
 		
 		for (int i = 1; i < restaurants.size(); i++){
 			addRestaurantToMap(restaurants.get(i), MARKER_COLOR);
@@ -131,13 +134,11 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 	 * @param restaurant
 	 */
 	
-	private void addRestaurantToMap(Restaurant rest, float color) {
-				
-		map.addMarker(new MarkerOptions()
+	private Marker addRestaurantToMap(Restaurant rest, float color) {			
+		return map.addMarker(new MarkerOptions()
 			.position(new LatLng(rest.getLatitude(), rest.getLongitude()))
 			.icon(BitmapDescriptorFactory.defaultMarker(color))
-		);
-		
+		);		
 	}
 	
 	/**
@@ -180,6 +181,16 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 
 	@Override
 	public void onDisconnected() {
+	}
+	
+	@Override
+	public boolean onMarkerClick(Marker marker) {
+		if (!marker.equals(selectedMarker)) {
+			selectedMarker.setIcon(BitmapDescriptorFactory.defaultMarker(MARKER_COLOR));
+			marker.setIcon(BitmapDescriptorFactory.defaultMarker(SELECTED_MARKER_COLOR));
+			selectedMarker = marker;
+		}
+		return false;
 	}
 	
 }
