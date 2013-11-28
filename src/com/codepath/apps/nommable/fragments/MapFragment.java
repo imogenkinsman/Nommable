@@ -1,6 +1,7 @@
 package com.codepath.apps.nommable.fragments;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.location.Location;
 import android.os.Bundle;
@@ -34,9 +35,8 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 	TextView tvCityState;
 	GoogleMap map;
 
-	ArrayList<Restaurant> restaurants;
-	ArrayList<Marker> markers;
-	Marker selectedMarker;
+	private HashMap<Marker, Restaurant> markerToRestaurant = new HashMap<Marker, Restaurant>();
+	private Marker selectedMarker;
 	
 	private static LocationClient locationClient;
 	private static View view;
@@ -114,17 +114,18 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 			Log.e("ERROR", "attempted to update restaurants with empty or null arraylist");
 			return;
 		}
-		
-		this.restaurants = restaurants;
-		
+				
 		map.clear();
+		markerToRestaurant.clear();
 		
 		// set our initial "selected" restaurant
 		updateRestarauntText(restaurants.get(0));
-		selectedMarker = addRestaurantToMap(restaurants.get(0), SELECTED_MARKER_COLOR);	
+		selectedMarker = addRestaurantToMap(restaurants.get(0), SELECTED_MARKER_COLOR);
+		markerToRestaurant.put(selectedMarker, restaurants.get(0));
 		
 		for (int i = 1; i < restaurants.size(); i++){
-			addRestaurantToMap(restaurants.get(i), MARKER_COLOR);
+			Marker marker = addRestaurantToMap(restaurants.get(i), MARKER_COLOR);
+			markerToRestaurant.put(marker, restaurants.get(i));
 		}
 	}
 	
@@ -189,6 +190,7 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 			selectedMarker.setIcon(BitmapDescriptorFactory.defaultMarker(MARKER_COLOR));
 			marker.setIcon(BitmapDescriptorFactory.defaultMarker(SELECTED_MARKER_COLOR));
 			selectedMarker = marker;
+			updateRestarauntText(markerToRestaurant.get(marker));
 		}
 		return false;
 	}

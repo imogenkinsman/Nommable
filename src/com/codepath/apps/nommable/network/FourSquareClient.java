@@ -70,7 +70,7 @@ public class FourSquareClient {
     	params.put("ll", Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude()));
     	params.put("radius", "1600"); // ~1 mile
     	params.put("venuePhotos", "1");
-    	params.put("openNow", "1"); // comment this out when testing at 3am
+    	//params.put("openNow", "1"); // comment this out when testing at 3am
     	params.put("v", "20131123"); // see https://developer.foursquare.com/overview/versioning
     	params.put("client_id", clientId);
     	params.put("client_secret", clientSecret);
