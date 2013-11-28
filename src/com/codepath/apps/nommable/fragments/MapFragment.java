@@ -164,7 +164,7 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 	public void onPause() {
 		super.onPause();
 		
-        locationClient.connect();
+        locationClient.disconnect();
 	}
 	
 	@Override
