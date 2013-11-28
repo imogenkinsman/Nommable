@@ -155,6 +155,16 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 		tvCityState.setText(rest.getCity() + ", " + rest.getState());
 	}
 
+	/**
+	 * Returns the currently selected restaurant.
+	 * 
+	 * @return
+	 */
+	
+	public Restaurant getSelectedRestaurant() {
+		return markerToRestaurant.get(selectedMarker);
+	}
+	
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -190,7 +200,7 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 			selectedMarker.setIcon(BitmapDescriptorFactory.defaultMarker(MARKER_COLOR));
 			marker.setIcon(BitmapDescriptorFactory.defaultMarker(SELECTED_MARKER_COLOR));
 			selectedMarker = marker;
-			updateRestarauntText(markerToRestaurant.get(marker));
+			updateRestarauntText(getSelectedRestaurant());
 		}
 		return false;
 	}
