@@ -3,6 +3,7 @@ package com.codepath.apps.nommable.fragments;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.app.Activity;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -37,6 +38,7 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 
 	private HashMap<Marker, Restaurant> markerToRestaurant = new HashMap<Marker, Restaurant>();
 	private Marker selectedMarker;
+	private OnRestaurantChangedListener listener;
 	
 	private static LocationClient locationClient;
 	private static View view;
@@ -58,6 +60,25 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 		args.putSerializable("restaurants", restaurants);
 		mapFrag.setArguments(args);
 		return mapFrag;
+	}
+	
+	/**
+	 * An activity that MapFragment attaches to MUST implement this as a means of notifying the activity as to which
+	 * restaurant is currently selected.
+	 */
+	public interface OnRestaurantChangedListener {
+		public void onRestaurantChanged(Restaurant rest);
+	}
+	
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		if (activity instanceof OnRestaurantChangedListener) {
+			listener = (OnRestaurantChangedListener) activity;
+		} else {
+			throw new ClassCastException(activity.toString()
+					+ " must implement OnRestaurantChangedListener");
+		}
 	}
 	
 	@Override
@@ -154,16 +175,6 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 		tvStreetAddress.setText(rest.getAddress());
 		tvCityState.setText(rest.getCity() + ", " + rest.getState());
 	}
-
-	/**
-	 * Returns the currently selected restaurant.
-	 * 
-	 * @return
-	 */
-	
-	public Restaurant getSelectedRestaurant() {
-		return markerToRestaurant.get(selectedMarker);
-	}
 	
 	@Override
 	public void onResume() {
@@ -200,7 +211,10 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 			selectedMarker.setIcon(BitmapDescriptorFactory.defaultMarker(MARKER_COLOR));
 			marker.setIcon(BitmapDescriptorFactory.defaultMarker(SELECTED_MARKER_COLOR));
 			selectedMarker = marker;
-			updateRestarauntText(getSelectedRestaurant());
+			
+			Restaurant rest = markerToRestaurant.get(selectedMarker);
+			updateRestarauntText(rest);
+			listener.onRestaurantChanged(rest);
 		}
 		return false;
 	}
