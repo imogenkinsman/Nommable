@@ -21,6 +21,7 @@ import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -37,6 +38,9 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 	
 	private static LocationClient locationClient;
 	private static View view;
+	
+	private static final float SELECTED_MARKER_COLOR = BitmapDescriptorFactory.HUE_RED;
+	private static final float MARKER_COLOR = BitmapDescriptorFactory.HUE_AZURE;
 	
 	/**
 	 * A common pattern for creating a Fragment with arguments.
@@ -103,14 +107,21 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 	 */
 	
 	public void updateRestaurants(ArrayList<Restaurant> restaurants) {
+		if (restaurants == null || restaurants.size() == 0){
+			Log.e("ERROR", "attempted to update restaurants with empty or null arraylist");
+			return;
+		}
+		
 		this.restaurants = restaurants;
+		
+		map.clear();
 		
 		// set our initial "selected" restaurant
 		updateRestarauntText(restaurants.get(0));
+		addRestaurantToMap(restaurants.get(0), SELECTED_MARKER_COLOR);	
 		
-		map.clear();
-		for (Restaurant rest : restaurants) {
-			addRestaurantToMap(rest);
+		for (int i = 1; i < restaurants.size(); i++){
+			addRestaurantToMap(restaurants.get(i), MARKER_COLOR);
 		}
 	}
 	
@@ -120,10 +131,13 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 	 * @param restaurant
 	 */
 	
-	private void addRestaurantToMap(Restaurant rest) {
+	private void addRestaurantToMap(Restaurant rest, float color) {
+				
 		map.addMarker(new MarkerOptions()
 			.position(new LatLng(rest.getLatitude(), rest.getLongitude()))
+			.icon(BitmapDescriptorFactory.defaultMarker(color))
 		);
+		
 	}
 	
 	/**
