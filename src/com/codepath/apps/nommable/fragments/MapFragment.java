@@ -101,7 +101,6 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 		} catch (InflateException e) {
 			/* map is already there, just return view as it is */
 		}
-		Log.d("DEBUG", "onCreateView in MapFragment");
 		return view;
 	}
 	

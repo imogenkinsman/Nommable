@@ -5,17 +5,18 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 
 import com.codepath.apps.nommable.R;
 import com.codepath.apps.nommable.adapters.ResultsPagerAdapter;
+import com.codepath.apps.nommable.fragments.DetailsFragment;
 import com.codepath.apps.nommable.fragments.MapFragment.OnRestaurantChangedListener;
 import com.codepath.apps.nommable.models.Restaurant;
 
 public class ResultsActivity extends FragmentActivity implements OnRestaurantChangedListener {
 	ArrayList<Restaurant> restaurants;	
 	ResultsPagerAdapter rpAdapter;
-	Restaurant currentRestaurant;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,8 @@ public class ResultsActivity extends FragmentActivity implements OnRestaurantCha
 
 	@Override
 	public void onRestaurantChanged(Restaurant rest) {
-		currentRestaurant = rest;
+		DetailsFragment details = (DetailsFragment) rpAdapter.getFragment(1);
+		details.updateText(rest);
 	}
 	
 }

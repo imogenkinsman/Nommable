@@ -2,7 +2,6 @@ package com.codepath.apps.nommable.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
