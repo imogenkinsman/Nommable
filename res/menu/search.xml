@@ -1,9 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <item 
-        android:id="@+id/history"
-        android:icon="@drawable/ic_action_collection"
-        android:showAsAction="ifRoom|withText"
-        android:onClick="onHistory"
-        android:title="@string/history"/>
-</menu>

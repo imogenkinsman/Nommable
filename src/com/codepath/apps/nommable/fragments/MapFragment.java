@@ -10,6 +10,9 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -84,8 +87,14 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
 		
 		locationClient = new LocationClient(getActivity(), this, this);
+	}
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.map, menu);
 	}
 	
 	@Override
@@ -198,6 +207,21 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 		Location curLocation = locationClient.getLastLocation();
 		LatLng curLatLng = new LatLng(curLocation.getLatitude(), curLocation.getLongitude());		
 		map.moveCamera(CameraUpdateFactory.newLatLngZoom(curLatLng, 13.5f));
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		
+		case R.id.menu_setsatellite:
+			map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+			break;
+		case R.id.menu_showtraffic:
+			map.setTrafficEnabled(true);
+			break;
+		}
+		
+		return true;
 	}
 
 	@Override

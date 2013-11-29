@@ -17,7 +17,7 @@ public class ResultsPagerAdapter extends FragmentPagerAdapter {
 	
 	private static final String[] titles = {"Map", "Details", "Menu"};
 	
-	SparseArray<Fragment> fragmentArray = new SparseArray<Fragment>();
+	SparseArray<Fragment> fragments = new SparseArray<Fragment>();
 	ArrayList<Restaurant> restaurants;
 
 	public ResultsPagerAdapter(FragmentManager fm, ArrayList<Restaurant> restaurants) {
@@ -49,17 +49,17 @@ public class ResultsPagerAdapter extends FragmentPagerAdapter {
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
 		Fragment fragment = (Fragment) super.instantiateItem(container, position);
-		fragmentArray.put(position, fragment);
+		fragments.put(position, fragment);
 		return fragment;
 	}
 	
 	@Override
 	public void destroyItem(ViewGroup container, int position, Object object) {
-		fragmentArray.remove(position);
+		fragments.remove(position);
 	}
 	
 	public Fragment getFragment(int position) {
-		return fragmentArray.get(position);
+		return fragments.get(position);
 	}
 
 }
