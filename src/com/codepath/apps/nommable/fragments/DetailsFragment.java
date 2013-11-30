@@ -12,7 +12,7 @@ import com.codepath.apps.nommable.models.Restaurant;
 
 public class DetailsFragment extends Fragment {
 
-	TextView textView1;
+	TextView tvDetailsName;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -24,11 +24,11 @@ public class DetailsFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		textView1 = (TextView) getActivity().findViewById(R.id.textView1);
+		tvDetailsName = (TextView) getActivity().findViewById(R.id.tvDetailsName);
 	}
 	
 	public void updateText(Restaurant rest) {
-		textView1.setText(rest.getName());
+		tvDetailsName.setText(rest.getName());
 	}
 	
 }

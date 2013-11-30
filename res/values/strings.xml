@@ -12,5 +12,6 @@
     <string name="tap_here_to_start">Tap here to Start</string>
     <string name="toggle_traffic">Toggle Traffic</string>
     <string name="favorites">Favorites</string>
+    <string name="menu">Menu</string>
 
 </resources>
