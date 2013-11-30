@@ -40,7 +40,6 @@ public class FourSquareClient {
      * @param handler an AsyncHttpResponseHandler that performs some action upon receiving a response
      */
     public void search(Location location, AsyncHttpResponseHandler handler) {
-    	Log.d("DEBUG", "Starting FourSquare search");
     	String apiUrl = BASE_URL + "venues/search";
     	RequestParams params = new RequestParams();
     	params.put("limit", "30");
@@ -62,7 +61,6 @@ public class FourSquareClient {
      * @param handler an AsyncHttpResponseHandler for managing the response
      */
     public void explore(Location location, AsyncHttpResponseHandler handler) {
-    	Log.d("DEBUG", "Starting FourSquare explore");
     	String apiUrl = BASE_URL + "venues/explore";
     	RequestParams params = new RequestParams();
     	params.put("section", "food");
@@ -77,13 +75,24 @@ public class FourSquareClient {
     	client.get(apiUrl, params, handler);
     }
     
+    public void getMenu(String id, AsyncHttpResponseHandler handler) {
+    	Log.d("DEBUG", "calling getmenu");
+    	String apiUrl = BASE_URL + "venues/" + id + "/menu";
+    	Log.d("DEBUG", apiUrl);
+    	RequestParams params = new RequestParams();
+    	params.put("v", "20131123"); // see https://developer.foursquare.com/overview/versioning
+    	params.put("client_id", clientId);
+    	params.put("client_secret", clientSecret);
+    	client.get(apiUrl, params, handler);
+    }
+    
     /**
      * Makes a get request to FourSquare for an array of their current list of categories.
      * See https://developer.foursquare.com/docs/venues/categories
      * 
      * @param handler an AsyncHttpResponseHandler that performs some action upon receiving a response
      */
-    public static void getCategories(AsyncHttpResponseHandler handler) {
+    public void getCategories(AsyncHttpResponseHandler handler) {
     	Log.d("DEBUG", "Getting FourSquare venue categories");  	
     }
     

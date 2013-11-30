@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -12,6 +13,7 @@ import com.codepath.apps.nommable.R;
 import com.codepath.apps.nommable.adapters.ResultsPagerAdapter;
 import com.codepath.apps.nommable.fragments.DetailsFragment;
 import com.codepath.apps.nommable.fragments.MapFragment.OnRestaurantChangedListener;
+import com.codepath.apps.nommable.fragments.MenuFragment;
 import com.codepath.apps.nommable.models.Restaurant;
 
 public class ResultsActivity extends SherlockFragmentActivity implements OnRestaurantChangedListener {
@@ -34,10 +36,16 @@ public class ResultsActivity extends SherlockFragmentActivity implements OnResta
 			
 			@Override
 			public void onPageSelected(int position) {
-				if (position == 1) {
+				switch (position) {
+				case 1:
 					DetailsFragment details = (DetailsFragment) rpAdapter.getFragment(1);
 					details.updateText(currentRestaurant);
-				}
+					break;
+				case 2:
+					MenuFragment menu = (MenuFragment) rpAdapter.getFragment(2);
+					menu.update(currentRestaurant);
+					break;
+				}			
 			}
 			
 			@Override

@@ -83,32 +83,26 @@ public class LaunchActivity extends Activity implements ConnectionCallbacks, OnC
 	protected void onResume() {
 		super.onResume();
 		
-        locationClient.connect();
+		locationClient.connect();
 	}
 	
     @Override
     protected void onPause() {
-            super.onPause();
+    	super.onPause();
 
-            locationClient.disconnect();
+    	locationClient.disconnect();
     }
 
 	@Override
-	public void onConnectionFailed(ConnectionResult result) {
-		// TODO Auto-generated method stub
-		
+	public void onConnectionFailed(ConnectionResult result) {		
 	}
 
 	@Override
-	public void onConnected(Bundle connectionHint) {
-		// TODO Auto-generated method stub
-		
+	public void onConnected(Bundle connectionHint) {		
 	}
 
 	@Override
-	public void onDisconnected() {
-		// TODO Auto-generated method stub
-		
+	public void onDisconnected() {		
 	}
 
 }

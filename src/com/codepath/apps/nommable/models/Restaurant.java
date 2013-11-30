@@ -51,7 +51,7 @@ public class Restaurant extends Model implements Serializable {
 	public String getName() {
 		return name;
 	}
-	public String getYelpId() {
+	public String getFourSquareId() {
 		return id;
 	}
 	public String getAddress() {
@@ -117,7 +117,7 @@ public class Restaurant extends Model implements Serializable {
 		return r;
 	}
 	/**
-	 * Maps array of retaurant json results into restaurant model objects
+	 * Maps array of restaurant json results into restaurant model objects
 	 * 
 	 * @param jsonArray array of venues from JSON Response
 	 * @return ArrayList of Restaurant objects
@@ -141,7 +141,7 @@ public class Restaurant extends Model implements Serializable {
 		}
 		return restaurants;
 	}
-	
+		
 	/**
 	 * Retrieves 30 most recently viewed Restaurants
 	 * @return arraylist of restaurant objects
