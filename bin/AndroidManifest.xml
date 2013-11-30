@@ -71,8 +71,7 @@
             android:theme="@style/Sherlock.__Theme.Light" >
         </activity>
         <activity
-            android:name="com.codepath.apps.nommable.activities.HistoryActivity"
-            android:label="@string/title_activity_history" >
+            android:name="com.codepath.apps.nommable.activities.FavoritesActivity" >
         </activity>
     </application>
 

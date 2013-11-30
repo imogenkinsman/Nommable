@@ -1152,6 +1152,7 @@ containing a value of this type.
         public static final int abs__up=0x7f04000b;
         public static final int disableHome=0x7f040009;
         public static final int edit_query=0x7f04002a;
+        public static final int history=0x7f040047;
         public static final int homeAsUp=0x7f040006;
         public static final int hybrid=0x7f040013;
         public static final int imageView1=0x7f040037;
@@ -1366,6 +1367,7 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f090020;
+        public static final int favorites=0x7f090033;
         public static final int find_restaurant=0x7f09002c;
         public static final int history=0x7f090030;
         public static final int launch=0x7f09002d;

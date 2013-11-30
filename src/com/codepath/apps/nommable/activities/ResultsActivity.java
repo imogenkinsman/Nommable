@@ -2,13 +2,14 @@ package com.codepath.apps.nommable.activities;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.codepath.apps.nommable.R;
 import com.codepath.apps.nommable.adapters.ResultsPagerAdapter;
 import com.codepath.apps.nommable.fragments.DetailsFragment;
@@ -67,6 +68,11 @@ public class ResultsActivity extends SherlockFragmentActivity implements OnResta
 	@Override
 	public void onRestaurantChanged(Restaurant rest) {
 		currentRestaurant = rest;
+	}
+	
+	public void onFavorites(MenuItem item) {
+		Intent i = new Intent(this, FavoritesActivity.class);
+		startActivity(i);
 	}
 	
 }

@@ -15,7 +15,7 @@ import com.codepath.apps.nommable.models.Restaurant;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class MenuFragment extends Fragment {
-
+	Restaurant currentRestaurant;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,12 +23,16 @@ public class MenuFragment extends Fragment {
 		return inflater.inflate(R.layout.fragment_menu, container, false);
 	}
 	
-	public void update(Restaurant rest) {
-		NommableApp.getRestClient().getMenu(rest.getFourSquareId(), new JsonHttpResponseHandler(){
-			@Override
-			public void onSuccess(JSONObject jsonResponse) {
-				Log.d("DEBUG", jsonResponse.toString());
-			}
-		});
+	public void update(final Restaurant rest) {
+		// don't spam unnecessary requests if we don't need to
+		if (rest != currentRestaurant){
+			NommableApp.getRestClient().getMenu(rest.getFourSquareId(), new JsonHttpResponseHandler(){
+				@Override
+				public void onSuccess(JSONObject jsonResponse) {
+					currentRestaurant = rest;
+					Log.d("DEBUG", jsonResponse.toString());
+				}
+			});
+		}
 	}
 }
