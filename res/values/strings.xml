@@ -3,20 +3,13 @@
 
     <string name="app_name">Nommable</string>
     <string name="action_settings">Settings</string>
-    <string name="login_label">Log in</string>
-    <string name="title_activity_search">Find a Restaurant</string>
     <string name="title_activity_search_result">SearchResultActivity</string>
     <string name="find_restaurant">Find A Restaurant</string>
     <string name="launch">Start Search</string>
     <string name="title_activity_map">MapActivity</string>
-    <string name="what_else">What else?</string>
-    <string name="try_again">Try Again</string>
     <string name="title_activity_history">HistoryActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="contentdesc"/>
-    <string name="feel_like_eating">I feel like eating</string>
-    <string name="minimun_rating">Minimum Rating</string>
     <string name="history">History</string>
     <string name="tap_here_to_start">Tap here to Start</string>
+    <string name="toggle_traffic">Toggle Traffic</string>
 
 </resources>

@@ -226,14 +226,12 @@ containing a value of this type.
     public static final class id {
         public static final int hybrid=0x7f050004;
         public static final int imageView1=0x7f050006;
-        public static final int ivRatingSmall=0x7f05001a;
         public static final int ivRestaurant=0x7f050013;
         public static final int launch=0x7f050007;
         public static final int linearLayout1=0x7f05000d;
         public static final int lvRestaurants=0x7f050005;
         public static final int map=0x7f050012;
-        public static final int menu_setsatellite=0x7f05001c;
-        public static final int menu_showtraffic=0x7f05001d;
+        public static final int menu_showtraffic=0x7f050015;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int pager_header=0x7f050009;
@@ -243,15 +241,9 @@ containing a value of this type.
         public static final int terrain=0x7f050003;
         public static final int textView1=0x7f05000c;
         public static final int tvCityState=0x7f050011;
-        public static final int tvMiles=0x7f050016;
-        public static final int tvMilesAway=0x7f050015;
-        public static final int tvMinFar=0x7f050018;
-        public static final int tvMinFarAway=0x7f050017;
-        public static final int tvRating=0x7f05001b;
         public static final int tvRestAddress=0x7f050014;
         public static final int tvRestName=0x7f05000e;
         public static final int tvRestPhone=0x7f05000f;
-        public static final int tvRestaurantName=0x7f050019;
         public static final int tvStreetAddress=0x7f050010;
         public static final int viewPager=0x7f050008;
     }
@@ -267,7 +259,6 @@ containing a value of this type.
         public static final int fragment_map=0x7f030005;
         public static final int fragment_menu=0x7f030006;
         public static final int item_restaurant=0x7f030007;
-        public static final int windowlayout=0x7f030008;
     }
     public static final class menu {
         public static final int history=0x7f0b0000;
@@ -375,21 +366,14 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
-        public static final int contentdesc=0x7f060028;
-        public static final int feel_like_eating=0x7f060029;
-        public static final int find_restaurant=0x7f060021;
-        public static final int hello_world=0x7f060027;
-        public static final int history=0x7f06002b;
-        public static final int launch=0x7f060022;
-        public static final int login_label=0x7f06001e;
-        public static final int minimun_rating=0x7f06002a;
-        public static final int tap_here_to_start=0x7f06002c;
-        public static final int title_activity_history=0x7f060026;
-        public static final int title_activity_map=0x7f060023;
-        public static final int title_activity_search=0x7f06001f;
-        public static final int title_activity_search_result=0x7f060020;
-        public static final int try_again=0x7f060025;
-        public static final int what_else=0x7f060024;
+        public static final int find_restaurant=0x7f06001f;
+        public static final int history=0x7f060023;
+        public static final int launch=0x7f060020;
+        public static final int tap_here_to_start=0x7f060024;
+        public static final int title_activity_history=0x7f060022;
+        public static final int title_activity_map=0x7f060021;
+        public static final int title_activity_search_result=0x7f06001e;
+        public static final int toggle_traffic=0x7f060025;
     }
     public static final class style {
         /** 

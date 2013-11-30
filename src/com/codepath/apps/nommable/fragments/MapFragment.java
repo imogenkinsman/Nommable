@@ -213,11 +213,8 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		
-		case R.id.menu_setsatellite:
-			map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-			break;
 		case R.id.menu_showtraffic:
-			map.setTrafficEnabled(true);
+			map.setTrafficEnabled(!map.isTrafficEnabled());
 			break;
 		}
 		
