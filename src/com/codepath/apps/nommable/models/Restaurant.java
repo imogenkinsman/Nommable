@@ -109,7 +109,7 @@ public class Restaurant extends Model implements Serializable {
 			r.latitute = location.getDouble("lat");
 			r.longitude = location.getDouble("lng");
 			r.zip = location.getString("postalCode");
-//			r.userRating = -1; // sentinel value for "not set yet"
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 			return null;

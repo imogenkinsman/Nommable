@@ -23,7 +23,6 @@ public class DetailsFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
 		tvDetailsName = (TextView) getActivity().findViewById(R.id.tvDetailsName);
 	}
 	

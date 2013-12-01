@@ -44,7 +44,7 @@ public class ResultsActivity extends SherlockFragmentActivity implements OnResta
 					break;
 				case 2:
 					MenuFragment menu = (MenuFragment) rpAdapter.getFragment(2);
-					menu.update(currentRestaurant);
+					menu.getMenu(currentRestaurant);
 					break;
 				}			
 			}

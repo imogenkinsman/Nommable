@@ -1,10 +1,12 @@
 package com.codepath.apps.nommable.fragments;
 
+import java.util.ArrayList;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.codepath.apps.nommable.NommableApp;
 import com.codepath.apps.nommable.R;
+import com.codepath.apps.nommable.models.Menu;
 import com.codepath.apps.nommable.models.Restaurant;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -31,19 +34,40 @@ public class MenuFragment extends Fragment {
 		tvMenuName = (TextView) getActivity().findViewById(R.id.tvMenuName);
 	}
 	
-	public void update(final Restaurant rest) {
-		// don't spam unnecessary requests if we don't need to
+	/**
+	 * Grabs the menu for a restaurant from FourSquare and updates the view accordingly.
+	 * 
+	 * @param rest The currently selected restaurant
+	 */
+	public void getMenu(final Restaurant rest) {
+		// don't spam unnecessary requests
 		if (rest != currentRestaurant){
 			tvMenuName.setText(rest.getName());
-			Log.d("DEBUG", tvMenuName.getText().toString());
 			
 			NommableApp.getRestClient().getMenu(rest.getFourSquareId(), new JsonHttpResponseHandler(){
 				@Override
 				public void onSuccess(JSONObject jsonResponse) {
-					currentRestaurant = rest;
-					Log.d("DEBUG", jsonResponse.toString());
+					
+					try {
+						ArrayList<Menu> menus = Menu.fromJson(jsonResponse.getJSONObject("response")
+								.getJSONObject("menu").getJSONObject("menus").getJSONArray("items"));
+						updateView(menus);
+						currentRestaurant = rest;
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
 				}
 			});
 		}
+	}
+	
+	/**
+	 * Updates the ListView to display menu information.
+	 * 
+	 * @param menus
+	 */
+	private void updateView(ArrayList<Menu> menus) {
+		
 	}
 }
