@@ -102,7 +102,7 @@ public class Restaurant extends Model implements Serializable {
 			r.id = venue.getString("id");
 			r.name = venue.getString("name");
 			r.formattedphone = venue.getJSONObject("contact").getString("formattedPhone");
-			r.image_url = photo.getString("prefix") + photo.getInt("width") + "x" + photo.getInt("height") + photo.getString("suffix");
+			r.image_url = photo.getString("prefix") + "original" + photo.getString("suffix");
 			r.address = location.getString("address");
 			r.state = location.getString("state");
 			r.city = location.getString("city");

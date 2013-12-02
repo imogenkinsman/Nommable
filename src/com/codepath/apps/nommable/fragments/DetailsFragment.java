@@ -26,7 +26,7 @@ public class DetailsFragment extends Fragment {
 		tvDetailsName = (TextView) getActivity().findViewById(R.id.tvDetailsName);
 	}
 	
-	public void updateText(Restaurant rest) {
+	public void updateView(Restaurant rest) {
 		tvDetailsName.setText(rest.getName());
 	}
 	

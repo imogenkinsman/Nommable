@@ -1152,17 +1152,18 @@ containing a value of this type.
         public static final int abs__up=0x7f04000b;
         public static final int disableHome=0x7f040009;
         public static final int edit_query=0x7f04002a;
-        public static final int history=0x7f040048;
+        public static final int history=0x7f04004b;
         public static final int homeAsUp=0x7f040006;
         public static final int hybrid=0x7f040013;
         public static final int imageView1=0x7f040037;
-        public static final int ivRestaurant=0x7f040045;
+        public static final int ivRestaurant=0x7f040048;
         public static final int launch=0x7f040038;
         public static final int listMode=0x7f040002;
         public static final int llRestaurant=0x7f04003e;
+        public static final int lvMenu=0x7f040044;
         public static final int lvRestaurants=0x7f040036;
         public static final int map=0x7f040043;
-        public static final int menu_showtraffic=0x7f040047;
+        public static final int menu_showtraffic=0x7f04004a;
         public static final int none=0x7f040010;
         public static final int normal=0x7f040001;
         public static final int pager_header=0x7f04003a;
@@ -1175,9 +1176,11 @@ containing a value of this type.
         public static final int tabMode=0x7f040003;
         public static final int terrain=0x7f040012;
         public static final int tvCityState=0x7f040042;
+        public static final int tvDescription=0x7f040047;
         public static final int tvDetailsName=0x7f04003d;
-        public static final int tvMenuName=0x7f040044;
-        public static final int tvRestAddress=0x7f040046;
+        public static final int tvName=0x7f040045;
+        public static final int tvPrice=0x7f040046;
+        public static final int tvRestAddress=0x7f040049;
         public static final int tvRestName=0x7f04003f;
         public static final int tvRestPhone=0x7f040040;
         public static final int tvStreetAddress=0x7f040041;
@@ -1218,9 +1221,11 @@ containing a value of this type.
         public static final int fragment_details=0x7f030019;
         public static final int fragment_map=0x7f03001a;
         public static final int fragment_menu=0x7f03001b;
-        public static final int item_restaurant=0x7f03001c;
-        public static final int sherlock_spinner_dropdown_item=0x7f03001d;
-        public static final int sherlock_spinner_item=0x7f03001e;
+        public static final int item_category=0x7f03001c;
+        public static final int item_entry=0x7f03001d;
+        public static final int item_restaurant=0x7f03001e;
+        public static final int sherlock_spinner_dropdown_item=0x7f03001f;
+        public static final int sherlock_spinner_item=0x7f030020;
     }
     public static final class menu {
         public static final int history=0x7f0c0000;

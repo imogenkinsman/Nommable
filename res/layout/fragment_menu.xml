@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backrepeat" >
-
-    <TextView
-        android:id="@+id/tvMenuName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+    
+    <ListView 
+        android:id="@+id/lvMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/menu"
-        android:textSize="27sp"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:divider="#000000"
+        android:dividerHeight="0.2sp" />
 
 </RelativeLayout>

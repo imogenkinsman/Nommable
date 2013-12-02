@@ -1,26 +1,31 @@
 package com.codepath.apps.nommable.fragments;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.codepath.apps.nommable.NommableApp;
 import com.codepath.apps.nommable.R;
-import com.codepath.apps.nommable.models.Menu;
+import com.codepath.apps.nommable.adapters.MenuAdapter;
+import com.codepath.apps.nommable.models.MenuEntry;
 import com.codepath.apps.nommable.models.Restaurant;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class MenuFragment extends Fragment {
 	Restaurant currentRestaurant;
-	TextView tvMenuName;
+	MenuAdapter mAdapter;
+	ListView lvMenu;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +36,10 @@ public class MenuFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		tvMenuName = (TextView) getActivity().findViewById(R.id.tvMenuName);
+		lvMenu = (ListView) getActivity().findViewById(R.id.lvMenu);
+		
+		mAdapter = new MenuAdapter(getActivity(), new ArrayList<MenuEntry>());
+		lvMenu.setAdapter(mAdapter);
 	}
 	
 	/**
@@ -42,16 +50,15 @@ public class MenuFragment extends Fragment {
 	public void getMenu(final Restaurant rest) {
 		// don't spam unnecessary requests
 		if (rest != currentRestaurant){
-			tvMenuName.setText(rest.getName());
 			
 			NommableApp.getRestClient().getMenu(rest.getFourSquareId(), new JsonHttpResponseHandler(){
 				@Override
 				public void onSuccess(JSONObject jsonResponse) {
 					
 					try {
-						ArrayList<Menu> menus = Menu.fromJson(jsonResponse.getJSONObject("response")
+						ArrayList<MenuEntry> menu = MenuEntry.fromJson(jsonResponse.getJSONObject("response")
 								.getJSONObject("menu").getJSONObject("menus").getJSONArray("items"));
-						updateView(menus);
+						updateView(menu);
 						currentRestaurant = rest;
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -67,7 +74,8 @@ public class MenuFragment extends Fragment {
 	 * 
 	 * @param menus
 	 */
-	private void updateView(ArrayList<Menu> menus) {
-		
+	private void updateView(ArrayList<MenuEntry> menus) {
+		mAdapter.clear();
+		mAdapter.addAll(menus);
 	}
 }

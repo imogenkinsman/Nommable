@@ -40,7 +40,7 @@ public class ResultsActivity extends SherlockFragmentActivity implements OnResta
 				switch (position) {
 				case 1:
 					DetailsFragment details = (DetailsFragment) rpAdapter.getFragment(1);
-					details.updateText(currentRestaurant);
+					details.updateView(currentRestaurant);
 					break;
 				case 2:
 					MenuFragment menu = (MenuFragment) rpAdapter.getFragment(2);

@@ -78,8 +78,18 @@ public class FourSquareClient {
     public void getMenu(String id, AsyncHttpResponseHandler handler) {
     	Log.d("DEBUG", "calling getmenu");
     	String apiUrl = BASE_URL + "venues/" + id + "/menu";
-    	Log.d("DEBUG", apiUrl);
     	RequestParams params = new RequestParams();
+    	params.put("v", "20131123"); // see https://developer.foursquare.com/overview/versioning
+    	params.put("client_id", clientId);
+    	params.put("client_secret", clientSecret);
+    	client.get(apiUrl, params, handler);
+    }
+    
+    public void getPhotos(String id, AsyncHttpResponseHandler handler) {
+    	Log.d("DEBUG", "calling getPhotos");
+    	String apiUrl = BASE_URL + "venues/" + id + "/photos";
+    	RequestParams params = new RequestParams();
+    	params.put("limit", "3");
     	params.put("v", "20131123"); // see https://developer.foursquare.com/overview/versioning
     	params.put("client_id", clientId);
     	params.put("client_secret", clientSecret);
