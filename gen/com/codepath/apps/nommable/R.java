@@ -1413,6 +1413,7 @@ containing a value of this type.
          */
         public static final int AppTheme=0x7f0a005a;
         public static final int BlueButton=0x7f0a005b;
+        public static final int Menu=0x7f0a005c;
         public static final int Sherlock___TextAppearance_Small=0x7f0a0046;
         public static final int Sherlock___Theme=0x7f0a0051;
         public static final int Sherlock___Theme_DarkActionBar=0x7f0a0053;

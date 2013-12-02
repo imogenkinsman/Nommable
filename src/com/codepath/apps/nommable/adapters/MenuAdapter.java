@@ -64,6 +64,10 @@ public class MenuAdapter extends ArrayAdapter<MenuEntry> {
 				view = inflater.inflate(R.layout.item_entry, null);
 				tvName = (TextView) view.findViewById(R.id.tvName);
 				tvName.setText(entry.getName());
+				TextView tvDescription = (TextView) view.findViewById(R.id.tvDescription);
+				tvDescription.setText(entry.getDescription());
+				TextView tvPrice = (TextView) view.findViewById(R.id.tvPrice);
+				tvPrice.setText(entry.getPrice());
 				break;
 			default:
 				view = inflater.inflate(R.layout.item_entry, null);

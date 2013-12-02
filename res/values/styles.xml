@@ -26,4 +26,10 @@
 	    <item name="android:focusable">true</item>
 	    <item name="android:clickable">true</item>
 	</style>
+	
+    <style name="Menu">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:background">#ffffff</item>
+    </style>
 </resources>
