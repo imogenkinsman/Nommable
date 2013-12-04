@@ -41,7 +41,7 @@ public class LaunchActivity extends Activity implements ConnectionCallbacks, OnC
         	GooglePlayServicesUtil.getErrorDialog(result, this, 0).show();
         }
 
-        locationClient = new LocationClient(this, this, this);
+        locationClient = new LocationClient(this, this, this);        
 	}
 
 	@Override

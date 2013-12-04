@@ -34,12 +34,16 @@ public class MenuAdapter extends ArrayAdapter<MenuEntry> {
 				
 		switch (type) {
 		case MENU:
+			Log.d("DEBUG", "menu");
 			return 0;
 		case SECTION:
+			Log.d("DEBUG", "section");
 			return 1;
 		case ENTRY:
+			Log.d("DEBUG", "entry");
 			return 2;
 		default:
+			Log.d("DEBUG", "default");
 			return 0;
 		}
 	}
@@ -53,7 +57,7 @@ public class MenuAdapter extends ArrayAdapter<MenuEntry> {
 		if (view == null) {
 			switch (type) {
 			case 0:
-				view = inflater.inflate(R.layout.item_entry, null);
+				view = inflater.inflate(R.layout.item_menu_type, null);
 				break;
 			case 1:
 				view = inflater.inflate(R.layout.item_category, null);
