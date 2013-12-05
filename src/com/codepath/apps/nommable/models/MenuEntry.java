@@ -6,6 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class MenuEntry {
 	
 	private String name;
@@ -72,8 +74,19 @@ public class MenuEntry {
 		try {
 			m.type = Type.ENTRY;
 			m.name = jsonObject.getString("name");
-			m.description = jsonObject.getString("description");
-			m.price = jsonObject.getString("price");
+			
+			if (jsonObject.has("price")) {
+				m.price = jsonObject.getString("price");
+			} else {
+				m.price = "";
+			}
+			
+			if (jsonObject.has("description")) {
+				m.description = jsonObject.getString("description");
+			} else {
+				m.description = "";
+			}
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 			return null;
