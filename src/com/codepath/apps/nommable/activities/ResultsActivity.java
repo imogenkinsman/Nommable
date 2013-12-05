@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.DisplayMetrics;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -40,7 +41,9 @@ public class ResultsActivity extends SherlockFragmentActivity implements OnResta
 				switch (position) {
 				case 1:
 					DetailsFragment details = (DetailsFragment) rpAdapter.getFragment(1);
-					details.updateView(currentRestaurant);
+					DisplayMetrics metrics = new DisplayMetrics();
+					getWindowManager().getDefaultDisplay().getMetrics(metrics);
+					details.update(metrics, currentRestaurant);
 					break;
 				case 2:
 					MenuFragment menu = (MenuFragment) rpAdapter.getFragment(2);

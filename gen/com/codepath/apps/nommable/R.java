@@ -1150,7 +1150,6 @@ containing a value of this type.
         public static final int abs__textButton=0x7f040017;
         public static final int abs__title=0x7f04001f;
         public static final int abs__up=0x7f04000b;
-        public static final int btnFavorites=0x7f04003e;
         public static final int btnLaunch=0x7f040038;
         public static final int disableHome=0x7f040009;
         public static final int edit_query=0x7f04002a;
@@ -1158,6 +1157,7 @@ containing a value of this type.
         public static final int homeAsUp=0x7f040006;
         public static final int hybrid=0x7f040013;
         public static final int ivNommable=0x7f040037;
+        public static final int ivPhoto=0x7f04003d;
         public static final int ivRestaurant=0x7f04004a;
         public static final int listMode=0x7f040002;
         public static final int llRestaurant=0x7f04003f;
@@ -1179,7 +1179,7 @@ containing a value of this type.
         public static final int tvCategory=0x7f040046;
         public static final int tvCityState=0x7f040043;
         public static final int tvDescription=0x7f040049;
-        public static final int tvDetailsName=0x7f04003d;
+        public static final int tvDetailsName=0x7f04003e;
         public static final int tvName=0x7f040047;
         public static final int tvPrice=0x7f040048;
         public static final int tvRestAddress=0x7f04004b;
