@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
@@ -48,6 +49,7 @@ public class ResultsPagerAdapter extends FragmentPagerAdapter {
 	
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
+		Log.d("DEBUG", "Instantiate " + position);
 		Fragment fragment = (Fragment) super.instantiateItem(container, position);
 		fragments.put(position, fragment);
 		return fragment;
@@ -55,6 +57,7 @@ public class ResultsPagerAdapter extends FragmentPagerAdapter {
 	
 	@Override
 	public void destroyItem(ViewGroup container, int position, Object object) {
+		Log.d("DEBUG", "Destroy " + position);
 		fragments.remove(position);
 	}
 	

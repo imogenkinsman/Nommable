@@ -24,6 +24,7 @@ public class MenuFragment extends Fragment {
 	Restaurant currentRestaurant;
 	MenuAdapter mAdapter;
 	ListView lvMenu;
+	ArrayList<MenuEntry> menu;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +39,10 @@ public class MenuFragment extends Fragment {
 		
 		mAdapter = new MenuAdapter(getActivity(), new ArrayList<MenuEntry>());
 		lvMenu.setAdapter(mAdapter);
+		if (savedInstanceState != null && savedInstanceState.containsKey("menu")){
+			menu = (ArrayList<MenuEntry>) savedInstanceState.getSerializable("menu");
+			updateView(menu);
+		}
 	}
 	
 	/**
@@ -54,7 +59,7 @@ public class MenuFragment extends Fragment {
 				public void onSuccess(JSONObject jsonResponse) {
 					
 					try {
-						ArrayList<MenuEntry> menu = MenuEntry.fromJson(jsonResponse.getJSONObject("response")
+						menu = MenuEntry.fromJson(jsonResponse.getJSONObject("response")
 								.getJSONObject("menu").getJSONObject("menus").getJSONArray("items"));
 						updateView(menu);
 						currentRestaurant = rest;
@@ -76,4 +81,11 @@ public class MenuFragment extends Fragment {
 		mAdapter.clear();
 		mAdapter.addAll(menus);
 	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putSerializable("menu", menu);
+	}
+	
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -43,11 +44,15 @@ public class ResultsActivity extends SherlockFragmentActivity implements OnResta
 					DetailsFragment details = (DetailsFragment) rpAdapter.getFragment(1);
 					DisplayMetrics metrics = new DisplayMetrics();
 					getWindowManager().getDefaultDisplay().getMetrics(metrics);
-					details.update(metrics, currentRestaurant);
+					if (details != null) {
+						details.update(metrics, currentRestaurant);
+					}
 					break;
 				case 2:
 					MenuFragment menu = (MenuFragment) rpAdapter.getFragment(2);
-					menu.getMenu(currentRestaurant);
+					if (menu != null) {
+						menu.getMenu(currentRestaurant);
+					}
 					break;
 				}			
 			}
@@ -59,7 +64,7 @@ public class ResultsActivity extends SherlockFragmentActivity implements OnResta
 			@Override
 			public void onPageScrollStateChanged(int state) {
 			}
-		});;
+		});
 	}
 	
 	@Override
