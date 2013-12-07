@@ -77,10 +77,15 @@ public class MenuAdapter extends ArrayAdapter<MenuEntry> {
 			} else if (type == 2) {
 				TextView tvName = (TextView) view.findViewById(R.id.tvName);
 				tvName.setText(entry.getName());
-				TextView tvDescription = (TextView) view.findViewById(R.id.tvDescription);
-				tvDescription.setText(entry.getDescription());
 				TextView tvPrice = (TextView) view.findViewById(R.id.tvPrice);
 				tvPrice.setText(entry.getPrice());
+				TextView tvDescription = (TextView) view.findViewById(R.id.tvDescription);
+				if (entry.getDescription().isEmpty()) {
+					tvDescription.setVisibility(View.GONE);
+				} else {
+					tvDescription.setVisibility(View.VISIBLE);
+					tvDescription.setText(entry.getDescription());
+				}
 			}
 
 		}

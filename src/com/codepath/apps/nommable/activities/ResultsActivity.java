@@ -39,22 +39,19 @@ public class ResultsActivity extends SherlockFragmentActivity implements OnResta
 			
 			@Override
 			public void onPageSelected(int position) {
-				switch (position) {
-				case 1:
+				if (position == 1) {
 					DetailsFragment details = (DetailsFragment) rpAdapter.getFragment(1);
 					DisplayMetrics metrics = new DisplayMetrics();
 					getWindowManager().getDefaultDisplay().getMetrics(metrics);
 					if (details != null) {
 						details.update(metrics, currentRestaurant);
 					}
-					break;
-				case 2:
+				} else if (position == 2) {
 					MenuFragment menu = (MenuFragment) rpAdapter.getFragment(2);
 					if (menu != null) {
 						menu.getMenu(currentRestaurant);
 					}
-					break;
-				}			
+				}
 			}
 			
 			@Override
