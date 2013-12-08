@@ -3,7 +3,6 @@ package com.codepath.apps.nommable.adapters;
 import java.util.List;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.codepath.apps.nommable.R;
-import com.codepath.apps.nommable.models.MenuEntry;
-import com.codepath.apps.nommable.models.MenuEntry.Type;
+import com.codepath.apps.nommable.models.MenuRow;
+import com.codepath.apps.nommable.models.MenuRow.Type;
 
-public class MenuAdapter extends ArrayAdapter<MenuEntry> {
+public class MenuAdapter extends ArrayAdapter<MenuRow> {
 
 	private LayoutInflater inflater;
 	
-	public MenuAdapter(Context context, List<MenuEntry> entries) {
+	public MenuAdapter(Context context, List<MenuRow> entries) {
 		super(context, 0, entries);
 		inflater = LayoutInflater.from(context);
 	}
@@ -66,25 +65,25 @@ public class MenuAdapter extends ArrayAdapter<MenuEntry> {
 				break;
 			}
 		}
-		MenuEntry entry = getItem(position);
-		if (entry != null) {
+		MenuRow row = getItem(position);
+		if (row != null) {
 			if (type == 0) {
 				TextView tvName = (TextView) view.findViewById(R.id.tvName);
-				tvName.setText(entry.getName());
+				tvName.setText(row.getName());
 			} else if (type == 1) {
 				TextView tvCategory = (TextView) view.findViewById(R.id.tvCategory);
-				tvCategory.setText(entry.getName());
+				tvCategory.setText(row.getName());
 			} else if (type == 2) {
 				TextView tvName = (TextView) view.findViewById(R.id.tvName);
-				tvName.setText(entry.getName());
+				tvName.setText(row.getName());
 				TextView tvPrice = (TextView) view.findViewById(R.id.tvPrice);
-				tvPrice.setText(entry.getPrice());
+				tvPrice.setText(row.getPrice());
 				TextView tvDescription = (TextView) view.findViewById(R.id.tvDescription);
-				if (entry.getDescription().isEmpty()) {
+				if (row.getDescription() == null) {
 					tvDescription.setVisibility(View.GONE);
 				} else {
 					tvDescription.setVisibility(View.VISIBLE);
-					tvDescription.setText(entry.getDescription());
+					tvDescription.setText(row.getDescription());
 				}
 			}
 

@@ -7,16 +7,18 @@ import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.codepath.apps.nommable.NommableApp;
 import com.codepath.apps.nommable.R;
 import com.codepath.apps.nommable.adapters.MenuAdapter;
+import com.codepath.apps.nommable.models.Menu;
 import com.codepath.apps.nommable.models.MenuEntry;
+import com.codepath.apps.nommable.models.MenuRow;
 import com.codepath.apps.nommable.models.Restaurant;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -24,7 +26,8 @@ public class MenuFragment extends Fragment {
 	Restaurant currentRestaurant;
 	MenuAdapter mAdapter;
 	ListView lvMenu;
-	ArrayList<MenuEntry> menu;
+	Menu menu;
+	TextView tvAttribution;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,10 +40,15 @@ public class MenuFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		lvMenu = (ListView) getActivity().findViewById(R.id.lvMenu);
 		
-		mAdapter = new MenuAdapter(getActivity(), new ArrayList<MenuEntry>());
+		// Footer needs to be added before setting adapter in order to be compatible with order API
+		View footer = View.inflate(getActivity(), R.layout.menu_footer, null);
+		tvAttribution = (TextView) footer.findViewById(R.id.tvAttribution);
+		lvMenu.addFooterView(footer, null, true);
+		
+		mAdapter = new MenuAdapter(getActivity(), new ArrayList<MenuRow>());
 		lvMenu.setAdapter(mAdapter);
 		if (savedInstanceState != null && savedInstanceState.containsKey("menu")){
-			menu = (ArrayList<MenuEntry>) savedInstanceState.getSerializable("menu");
+			menu = (Menu) savedInstanceState.getSerializable("menu");
 			updateView(menu);
 		}
 	}
@@ -59,8 +67,8 @@ public class MenuFragment extends Fragment {
 				public void onSuccess(JSONObject jsonResponse) {
 					
 					try {
-						menu = MenuEntry.fromJson(jsonResponse.getJSONObject("response")
-								.getJSONObject("menu").getJSONObject("menus").getJSONArray("items"));
+						menu = Menu.fromJson(jsonResponse.getJSONObject("response")
+								.getJSONObject("menu"));
 						updateView(menu);
 						currentRestaurant = rest;
 					} catch (JSONException e) {
@@ -77,9 +85,9 @@ public class MenuFragment extends Fragment {
 	 * 
 	 * @param menus
 	 */
-	private void updateView(ArrayList<MenuEntry> menus) {
+	private void updateView(Menu menu) {
 		mAdapter.clear();
-		mAdapter.addAll(menus);
+		mAdapter.addAll(menu.getMenuRows());
 	}
 	
 	@Override
