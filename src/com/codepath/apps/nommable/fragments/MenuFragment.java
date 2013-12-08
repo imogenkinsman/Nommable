@@ -17,7 +17,6 @@ import com.codepath.apps.nommable.NommableApp;
 import com.codepath.apps.nommable.R;
 import com.codepath.apps.nommable.adapters.MenuAdapter;
 import com.codepath.apps.nommable.models.Menu;
-import com.codepath.apps.nommable.models.MenuEntry;
 import com.codepath.apps.nommable.models.MenuRow;
 import com.codepath.apps.nommable.models.Restaurant;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -88,6 +87,8 @@ public class MenuFragment extends Fragment {
 	private void updateView(Menu menu) {
 		mAdapter.clear();
 		mAdapter.addAll(menu.getMenuRows());
+		
+		tvAttribution.setText(menu.getAttributionText());
 	}
 	
 	@Override
