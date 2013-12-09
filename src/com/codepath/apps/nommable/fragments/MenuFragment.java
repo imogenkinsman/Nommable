@@ -42,7 +42,7 @@ public class MenuFragment extends Fragment {
 		// Footer needs to be added before setting adapter in order to be compatible with order API
 		View footer = View.inflate(getActivity(), R.layout.menu_footer, null);
 		tvAttribution = (TextView) footer.findViewById(R.id.tvAttribution);
-		lvMenu.addFooterView(footer, null, true);
+		lvMenu.addFooterView(footer, null, false);
 		
 		mAdapter = new MenuAdapter(getActivity(), new ArrayList<MenuRow>());
 		lvMenu.setAdapter(mAdapter);
