@@ -137,6 +137,6 @@ public class Restaurant extends Model implements Serializable {
 	 * Return saved restaurants, ordered by most recent
 	 */
 	public static ArrayList<Restaurant> getFavorites() {
-		return new Select().from(Restaurant.class).orderBy("mId DESC").execute();
+		return new Select().from(Restaurant.class).orderBy("Id DESC").execute();
 	}
 }
