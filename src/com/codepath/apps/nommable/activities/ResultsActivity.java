@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.KeyEvent;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -22,6 +24,7 @@ public class ResultsActivity extends SherlockFragmentActivity implements OnResta
 	ArrayList<Restaurant> restaurants;	
 	ResultsPagerAdapter rpAdapter;
 	Restaurant currentRestaurant;
+	ViewPager pager;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -29,7 +32,7 @@ public class ResultsActivity extends SherlockFragmentActivity implements OnResta
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_results);
 
-		ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+		pager = (ViewPager) findViewById(R.id.viewPager);
 		restaurants = (ArrayList<Restaurant>) getIntent().getSerializableExtra("restaurants");
 		currentRestaurant = restaurants.get(0);
 		rpAdapter = new ResultsPagerAdapter(getSupportFragmentManager(), restaurants);
@@ -73,6 +76,20 @@ public class ResultsActivity extends SherlockFragmentActivity implements OnResta
 	@Override
 	public void onRestaurantChanged(Restaurant rest) {
 		currentRestaurant = rest;
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && pager.getCurrentItem() != 0) {
+			if (pager.getCurrentItem() == 1) {
+				pager.setCurrentItem(0);
+			} else if (pager.getCurrentItem() == 2) {
+				pager.setCurrentItem(1);
+			}
+			return true;
+		} else {
+			return super.onKeyDown(keyCode, event);
+		}
 	}
 	
 	public void onFavorites(MenuItem item) {
