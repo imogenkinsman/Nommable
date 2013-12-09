@@ -15,12 +15,10 @@ import com.activeandroid.query.Select;
 @Table (name = "Restaurant")
 public class Restaurant extends Model implements Serializable {
 
-	private static final long serialVersionUID = -7256102743331094491L;
-	
 	@Column(name = "name")
 	private String name;
-	@Column(name = "business_id")
-	private String id;
+	@Column(name = "foursquare_id")
+	private String fourSquareId;
 	@Column(name="address")
 	private String address;
 	@Column(name = "latitute")
@@ -48,7 +46,7 @@ public class Restaurant extends Model implements Serializable {
 		return name;
 	}
 	public String getFourSquareId() {
-		return id;
+		return fourSquareId;
 	}
 	public String getAddress() {
 		return address;
@@ -90,7 +88,7 @@ public class Restaurant extends Model implements Serializable {
 			JSONObject location = venue.getJSONObject("location");
 			JSONObject photo = venue.getJSONObject("photos").getJSONArray("groups").getJSONObject(0).getJSONArray("items").getJSONObject(0);
 			
-			r.id = venue.getString("id");
+			r.fourSquareId = venue.getString("id");
 			r.name = venue.getString("name");
 			r.formattedphone = venue.getJSONObject("contact").getString("formattedPhone");
 			r.image_url = photo.getString("prefix") + "original" + photo.getString("suffix");
@@ -133,4 +131,10 @@ public class Restaurant extends Model implements Serializable {
 		return restaurants;
 	}
 	
+	/**
+	 * Return saved restaurants, ordered by most recent
+	 */
+	public static ArrayList<Restaurant> getFavorites() {
+		return new Select().from(Restaurant.class).orderBy("mId DESC").execute();
+	}
 }

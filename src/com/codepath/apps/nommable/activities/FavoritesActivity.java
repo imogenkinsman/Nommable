@@ -34,7 +34,7 @@ public class FavoritesActivity extends Activity {
 	}
 	
 	private void setupViews() {
-		restaurants = Restaurant.getHistory();
+		restaurants = Restaurant.getFavorites();
 		rAdapter = new RestaurantAdapter(getApplicationContext(), restaurants);
 		lvRestaurants = (ListView) findViewById(R.id.lvRestaurants);
 		lvRestaurants.setAdapter(rAdapter);
