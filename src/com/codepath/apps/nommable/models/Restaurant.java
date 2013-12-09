@@ -15,8 +15,8 @@ import com.activeandroid.query.Select;
 @Table (name = "Restaurant")
 public class Restaurant extends Model implements Serializable {
 
-
 	private static final long serialVersionUID = -7256102743331094491L;
+	
 	@Column(name = "name")
 	private String name;
 	@Column(name = "business_id")
@@ -35,12 +35,8 @@ public class Restaurant extends Model implements Serializable {
 	private String zip;
 	@Column(name = "formattedphone")
 	private String formattedphone;
-	@Column(name = "categories")
-	private String categories;
 	@Column(name = "image_url")
 	private String image_url;
-	@Column(name = "viewedAt")
-	private Long viewedAt;
 
 	/**
 	 * ActiveAndroid requires you to use the superclass constructor.
@@ -78,11 +74,6 @@ public class Restaurant extends Model implements Serializable {
 	
 	public String getFullAddress() {
 		return address + ", " + city + ", " + state;
-	}
-	
-	public void setViewed() {
-		this.viewedAt = System.currentTimeMillis();
-		this.save();
 	}
 	
 	/**
@@ -140,14 +131,6 @@ public class Restaurant extends Model implements Serializable {
 			}
 		}
 		return restaurants;
-	}
-		
-	/**
-	 * Retrieves 30 most recently viewed Restaurants
-	 * @return arraylist of restaurant objects
-	 */
-	public static ArrayList<Restaurant> getHistory() {
-		return new Select().from(Restaurant.class).orderBy("viewedAt DESC").limit("30").execute();
 	}
 	
 }

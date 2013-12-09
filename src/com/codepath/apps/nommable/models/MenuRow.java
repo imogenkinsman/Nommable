@@ -40,24 +40,22 @@ public class MenuRow {
 	}
 	
 	private static ArrayList<MenuRow> fromJsonArray(JSONArray jsonArray, ArrayList<MenuRow> rows, int type) {
-		final Type[] typeAry = {Type.MENU, Type.SECTION, Type.ENTRY};
+		final Type[] typeArray = {Type.MENU, Type.SECTION, Type.ENTRY};
 		
 		for (int i = 0; i < jsonArray.length(); i++) {
 						
-			JSONObject json;
 			try {
-				json = jsonArray.getJSONObject(i);
+				JSONObject json = jsonArray.getJSONObject(i);
 				
-				MenuRow row = fromJsonObject(json, typeAry[type]);
+				MenuRow row = fromJsonObject(json, typeArray[type]);
 				
 				if (row != null) {
 					rows.add(row);
 				}
 			
-				if (type < (typeAry.length - 1)) {
+				if (type < (typeArray.length - 1)) {
 					fromJsonArray(json.getJSONObject("entries").getJSONArray("items"), rows, type + 1);
-				}
-				
+				}				
 			} catch (JSONException e) {
 				e.printStackTrace();
 				return rows;
