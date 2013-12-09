@@ -13,5 +13,6 @@
     <string name="toggle_traffic">Toggle Traffic</string>
     <string name="favorites">Favorites</string>
     <string name="menu">Menu</string>
+    <string name="attribution_image">Attribution Image</string>
 
 </resources>

@@ -6,12 +6,20 @@
     android:background="@android:color/transparent"
     android:paddingTop="15dp"
     android:paddingBottom="10dp" >
+
+    <ImageView
+        android:id="@+id/ivAttribution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/attribution_image" />
     
-        <TextView
+    <TextView
         android:id="@+id/tvAttribution"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:paddingTop="10dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:textSize="12sp" />

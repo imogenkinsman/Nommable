@@ -1,12 +1,13 @@
 package com.codepath.apps.nommable.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MenuRow {
+public class MenuRow implements Serializable {
 
 	private String name;
 	private String price;
