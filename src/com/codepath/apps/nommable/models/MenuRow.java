@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 public class MenuRow implements Serializable {
 
+	private static final long serialVersionUID = 1849235577855101819L;
+	
 	private String name;
 	private String price;
 	private String description;

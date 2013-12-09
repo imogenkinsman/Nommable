@@ -8,6 +8,8 @@ import org.json.JSONObject;
 
 public class Menu implements Serializable {
 	
+	private static final long serialVersionUID = 644424858574839495L;
+	
 	private String attributionImage;
 	private String attributionLink;
 	private String attributionText;

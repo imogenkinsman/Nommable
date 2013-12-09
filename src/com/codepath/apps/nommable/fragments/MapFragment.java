@@ -119,6 +119,7 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 		setup();
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void setup() {
 		tvRestName = (TextView) getActivity().findViewById(R.id.tvRestName);
 		tvRestPhone = (TextView) getActivity().findViewById(R.id.tvRestPhone);

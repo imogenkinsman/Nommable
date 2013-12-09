@@ -1385,6 +1385,7 @@ containing a value of this type.
         public static final int history=0x7f090030;
         public static final int launch=0x7f09002d;
         public static final int menu=0x7f090034;
+        public static final int nommable=0x7f090036;
         public static final int tap_here_to_start=0x7f090031;
         public static final int title_activity_history=0x7f09002f;
         public static final int title_activity_map=0x7f09002e;
