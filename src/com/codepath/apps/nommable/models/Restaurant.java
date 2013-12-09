@@ -15,6 +15,8 @@ import com.activeandroid.query.Select;
 @Table (name = "Restaurant")
 public class Restaurant extends Model implements Serializable {
 
+	private static final long serialVersionUID = -7256102743331094491L;
+	
 	@Column(name = "name")
 	private String name;
 	@Column(name = "foursquare_id")
