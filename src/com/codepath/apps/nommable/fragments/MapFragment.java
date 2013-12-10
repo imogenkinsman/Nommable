@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codepath.apps.nommable.R;
@@ -31,12 +32,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class MapFragment extends Fragment implements ConnectionCallbacks, OnConnectionFailedListener, OnMarkerClickListener {
 	TextView tvRestName;
-	TextView tvRestPhone;
-	TextView tvStreetAddress;
 	TextView tvCityState;
+	TextView tvCategory;
+	ImageView ivPreview;
 	GoogleMap map;
 
 	private HashMap<Marker, Restaurant> markerToRestaurant = new HashMap<Marker, Restaurant>();
@@ -122,9 +124,8 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 	@SuppressWarnings("unchecked")
 	private void setup() {
 		tvRestName = (TextView) getActivity().findViewById(R.id.tvRestName);
-		tvRestPhone = (TextView) getActivity().findViewById(R.id.tvRestPhone);
-		tvStreetAddress = (TextView) getActivity().findViewById(R.id.tvStreetAddress);
-		tvCityState = (TextView) getActivity().findViewById(R.id.tvCityState);
+		tvCategory = (TextView) getActivity().findViewById(R.id.tvCategory);
+		ivPreview = (ImageView) getActivity().findViewById(R.id.ivPreview);
 		
 		map = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.setMyLocationEnabled(true);
@@ -180,9 +181,8 @@ public class MapFragment extends Fragment implements ConnectionCallbacks, OnConn
 	
 	private void updateRestarauntText(Restaurant rest) {
 		tvRestName.setText(rest.getName());
-		tvRestPhone.setText(rest.getDisplayPhone());
-		tvStreetAddress.setText(rest.getAddress());
-		tvCityState.setText(rest.getCity() + ", " + rest.getState());
+		tvCategory.setText(rest.getCategory());
+		ImageLoader.getInstance().displayImage(rest.getImageUrl(), ivPreview);
 	}
 	
 	@Override
