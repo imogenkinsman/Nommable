@@ -8,7 +8,9 @@ import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,11 +24,23 @@ public class DetailsFragment extends Fragment {
 
 	TextView tvDetailsName;
 	ImageView ivPhoto;
+	Restaurant currentRest;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_details, container, false);
+		View v = inflater.inflate(R.layout.fragment_details, container, false);
+		
+		// TODO: implement OnClickListener with the fragment and move all code to an onClick override once this gets messy
+		Button btnFavorite = (Button) v.findViewById(R.id.btnFavorite);
+		btnFavorite.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				toggleFavorite();
+			}
+		});
+		
+		return v;
 	}
 	
 	@Override
@@ -37,6 +51,7 @@ public class DetailsFragment extends Fragment {
 	}
 	
 	public void update(final DisplayMetrics metrics, Restaurant rest) {
+		currentRest = rest;
 		tvDetailsName.setText(rest.getName());
 		
 		NommableApp.getRestClient().getPhoto(rest.getFourSquareId(), new JsonHttpResponseHandler() {
@@ -51,6 +66,10 @@ public class DetailsFragment extends Fragment {
 				}
 			}
 		});
+	}
+	
+	public void toggleFavorite() {
+		Restaurant.isSaved(currentRest);
 	}
 	
 }

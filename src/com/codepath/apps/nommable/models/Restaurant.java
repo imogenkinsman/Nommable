@@ -37,6 +37,8 @@ public class Restaurant extends Model implements Serializable {
 	private String formattedphone;
 	@Column(name = "image_url")
 	private String image_url;
+	@Column(name = "category")
+	private String category;
 
 	/**
 	 * ActiveAndroid requires you to use the superclass constructor.
@@ -76,6 +78,10 @@ public class Restaurant extends Model implements Serializable {
 		return address + ", " + city + ", " + state;
 	}
 	
+	public String getCategory() {
+		return category;
+	}
+	
 	/**
 	 * Maps JSON response to single a Restaurant object
 	 * @param jsonObject JSON response from FourSquare
@@ -100,6 +106,7 @@ public class Restaurant extends Model implements Serializable {
 			r.latitute = location.getDouble("lat");
 			r.longitude = location.getDouble("lng");
 			r.zip = location.getString("postalCode");
+			r.category = venue.getJSONArray("categories").getJSONObject(0).getString("name");
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -138,5 +145,10 @@ public class Restaurant extends Model implements Serializable {
 	 */
 	public static ArrayList<Restaurant> getFavorites() {
 		return new Select().from(Restaurant.class).orderBy("Id DESC").execute();
+	}
+	
+	public static boolean isSaved(Restaurant rest) {
+		Restaurant savedRest = new Select().from(Restaurant.class).where("foursquare_id = ?", rest.fourSquareId).limit("1").executeSingle();
+		return !(savedRest == null);
 	}
 }
