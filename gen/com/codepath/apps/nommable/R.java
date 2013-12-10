@@ -829,10 +829,10 @@ containing a value of this type.
         public static final int abs__bright_foreground_disabled_holo_light=0x7f060005;
         public static final int abs__bright_foreground_holo_dark=0x7f060002;
         public static final int abs__bright_foreground_holo_light=0x7f060003;
-        public static final int abs__primary_text_disable_only_holo_dark=0x7f060010;
-        public static final int abs__primary_text_disable_only_holo_light=0x7f060011;
-        public static final int abs__primary_text_holo_dark=0x7f060012;
-        public static final int abs__primary_text_holo_light=0x7f060013;
+        public static final int abs__primary_text_disable_only_holo_dark=0x7f060013;
+        public static final int abs__primary_text_disable_only_holo_light=0x7f060014;
+        public static final int abs__primary_text_holo_dark=0x7f060015;
+        public static final int abs__primary_text_holo_light=0x7f060016;
         public static final int common_action_bar_splitter=0x7f06000f;
         /**  Sign-in Button Colors 
          */
@@ -845,8 +845,11 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f06000c;
         public static final int common_signin_btn_light_text_focused=0x7f06000d;
         public static final int common_signin_btn_light_text_pressed=0x7f06000b;
-        public static final int common_signin_btn_text_dark=0x7f060014;
-        public static final int common_signin_btn_text_light=0x7f060015;
+        public static final int common_signin_btn_text_dark=0x7f060017;
+        public static final int common_signin_btn_text_light=0x7f060018;
+        public static final int gray=0x7f060012;
+        public static final int light_gray=0x7f060010;
+        public static final int white=0x7f060011;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1108,7 +1111,8 @@ containing a value of this type.
         public static final int restaurant_item_background=0x7f020096;
         public static final int states_blue_button=0x7f020097;
         public static final int sushi_bg=0x7f020098;
-        public static final int witewall_3=0x7f020099;
+        public static final int top_inset_border=0x7f020099;
+        public static final int witewall_3=0x7f02009a;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f040024;
@@ -1154,39 +1158,40 @@ containing a value of this type.
         public static final int btnLaunch=0x7f040038;
         public static final int disableHome=0x7f040009;
         public static final int edit_query=0x7f04002a;
-        public static final int history=0x7f04004e;
+        public static final int history=0x7f04004f;
         public static final int homeAsUp=0x7f040006;
         public static final int hybrid=0x7f040013;
-        public static final int ivAttribution=0x7f04004b;
+        public static final int ivAttribution=0x7f04004c;
         public static final int ivNommable=0x7f040037;
         public static final int ivPhoto=0x7f04003d;
-        public static final int ivPreview=0x7f040041;
-        public static final int ivRestaurant=0x7f040048;
+        public static final int ivPreview=0x7f040043;
+        public static final int ivRestaurant=0x7f040049;
         public static final int listMode=0x7f040002;
-        public static final int lvMenu=0x7f040044;
+        public static final int lvMenu=0x7f040045;
         public static final int lvRestaurants=0x7f040036;
         public static final int map=0x7f040040;
-        public static final int menu_showtraffic=0x7f04004d;
+        public static final int menu_showtraffic=0x7f04004e;
         public static final int none=0x7f040010;
         public static final int normal=0x7f040001;
         public static final int pager_header=0x7f04003a;
         public static final int ratingTitle=0x7f04003b;
         public static final int rbarStars=0x7f04003c;
+        public static final int rlPreview=0x7f040041;
         public static final int satellite=0x7f040011;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
         public static final int tabMode=0x7f040003;
         public static final int terrain=0x7f040012;
-        public static final int tvAttribution=0x7f04004c;
-        public static final int tvCategory=0x7f040043;
-        public static final int tvDescription=0x7f040047;
+        public static final int tvAttribution=0x7f04004d;
+        public static final int tvCategory=0x7f040044;
+        public static final int tvDescription=0x7f040048;
         public static final int tvDetailsName=0x7f04003e;
-        public static final int tvName=0x7f040045;
-        public static final int tvPrice=0x7f040046;
-        public static final int tvRestAddress=0x7f040049;
+        public static final int tvName=0x7f040046;
+        public static final int tvPrice=0x7f040047;
+        public static final int tvRestAddress=0x7f04004a;
         public static final int tvRestName=0x7f040042;
-        public static final int tvRestPhone=0x7f04004a;
+        public static final int tvRestPhone=0x7f04004b;
         public static final int useLogo=0x7f040004;
         public static final int viewPager=0x7f040039;
         public static final int wrap_content=0x7f040000;
